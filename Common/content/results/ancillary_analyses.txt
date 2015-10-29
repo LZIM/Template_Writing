@@ -1,0 +1,2 @@
+%Ancillary analyses. 
+Report any other analyses performed, including subgroup analyses and adjusted analyses, indicating those that were prespecified and those that were exploratory (though not necessarily in the level of detail of primary analyses). Consider putting the detailed results of these analyses on the supplemental online archive. Discuss the implications, if any, of the ancillary analyses for statistical error rates.

@@ -1,0 +1,2 @@
+%Intervention or manipulation fidelity. 
+If interventions or experimental manipulations were used, provide evidence on whether they were delivered as intended. In basic experimental research, this might be the results of checks on the manipulation. In applied research, this might be, for example, records and observations of intervention delivery sessions and attendance records.

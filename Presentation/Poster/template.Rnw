@@ -1,0 +1,506 @@
+\documentclass[final,t]{beamer}
+\mode<presentation>
+{ \usetheme{VU}}
+% additional settings
+\setbeamerfont{itemize}{size=\Hugesize}
+\setbeamerfont{itemize/enumerate body}{size=\Hugesize}
+\setbeamerfont{itemize/enumerate subbody}{size=\Hugesize}
+
+%additional packages
+\usepackage{changepage}
+
+\usepackage{ragged2e}
+\usepackage{times} 
+\usepackage{amsmath,amsthm, amssymb, latexsym}
+\usepackage{exscale} \boldmath 
+\usepackage{booktabs, array}
+\usepackage{rotating} %sideways environment 
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage[orientation=landscape,size=a1,scale=0.85]{beamerposter}
+\usepackage{Sweave}
+
+% To produce both postscript and pdf graphics, remove the eps and pdf
+% parameters in the next line. Set default plot size to 5 x 3.5 in.
+
+%\listfiles
+%\graphicspath{{figures/}}
+% Display a grid to help align images
+%\beamertemplategridbackground[1cm]
+
+
+\title{Impact of adolescent conscientiousness and intelligence on health at middle age:\\ 
+A sibling comparison approach}
+\author[S. Mason Garrison, Alexandria R. Hadd, \& Joseph Lee Rodgers]{S. Mason Garrison, Alexandria R. Hadd, \& Joseph Lee Rodgers}
+\institute[Vanderbilt University]{Vanderbilt University}
+\date[\Today]{\Today}
+
+\DefineVerbatimEnvironment{Sinput}{Verbatim} {xleftmargin=2em}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{xleftmargin=2em}
+\DefineVerbatimEnvironment{Scode}{Verbatim}{xleftmargin=2em}
+\fvset{listparameters={\setlength{\topsep}{0pt}}}
+\renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
+\def\beginjust{\begin{adjustwidth}{.2cm}{.2cm}\vskip-1ex\justify}
+\def\endjust{\end{adjustwidth}}
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+\def\eg{{\textit{e.g}}\onedot} \def\Eg{{\textit{E.g}}\onedot}
+\def\ie{{\textit{i.e}}\onedot} \def\Ie{{\textit{I.e}}\onedot}
+\def\cf{{\textit{c.f}}\onedot} \def\Cf{{\textit{C.f}}\onedot}
+\def\etc{{\textit{etc}}\onedot}
+\def\vs{{vs}\onedot}
+\def\wrt{w.r.t\onedot}
+\def\dof{d.o.f\onedot}
+\def\etal{{\textit{et al}}\onedot}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%\SweaveOpts{concordance=TRUE}
+\bibliographystyle{plainnat}
+<<label=first, include=FALSE, echo=FALSE>>= 
+file_drive= "C:"
+#file_drive="E:"
+
+
+  sweaveTemplate="beamerpostertest.Rnw"
+  library(psych)
+  library(xtable)
+  library(plyr)
+	library(ggplot2)
+	library(stringr)
+	options(width=80)
+#FUNCTIONS
+Mean <- function(x) base::mean(x, na.rm=TRUE)
+Median <- function(x) stats::median(x, na.rm=TRUE)
+Sd <- function(x) stats::sd(x, na.rm=TRUE)
+Min <- function(x) base::min(x, na.rm=TRUE) 
+Max <- function(x) base::max(x, na.rm=TRUE)
+Cor <- function(x) stats::cor(x, use = "pairwise.complete.obs")
+@ 
+
+\begin{frame}[fragile]
+  \begin{columns}[t]
+
+    %-- Column 1 ---------------------------------------------------
+    \begin{column}{0.25\linewidth}
+
+      %-- Block 1-1
+      \begin{block}{Introduction} 
+      <<label=datamanagement, include=FALSE, echo=FALSE>>= 
+coding_speed <- read.delim("data/coding_speed.csv")
+raw1980intelligence<- read.csv("data/raw1980intelligence.csv")
+raw1980intelligence[raw1980intelligence < 0] <- NA  
+names(raw1980intelligence)<-c("MCASEID","rawAFQT")
+coding_speed$MCASEID<-coding_speed$SubjectID
+coding_speed$rawcodingspeed <- coding_speed$ASVAB.8
+coding_speed$rawcodingspeed[coding_speed$rawcodingspeed == -4] <- NA  
+
+rawcodingspeed <-  coding_speed[,6:7]
+momintel <- read.csv("C:/Dropbox/SAS/MyFolders/79/SASGen1/momintel.csv", header=FALSE)
+names(momintel)<-c("MCASEID","Intel_G1","Intel_G1_SE","HID")
+IRT2PL_person_no_cluster <- read.table("C:/Dropbox/Work/Research/Projects/NLSY/AFI/R/MplusG1/IRT2PL_person_no_cluster.csv", quote="\"")
+IRT2PL_person_no_cluster<- IRT2PL_person_no_cluster[,105:106]
+names(IRT2PL_person_no_cluster)<-c("MCASEID","Intel_G1_NC")
+birthweight <- read.table("C:/Dropbox/SAS/MyFolders/79/SASGen1Kids/birthweight.dat", quote="\"", stringsAsFactors=FALSE)
+names(birthweight)<-c('CASEID','MCASEID','RACE','SEX_G2','YRB','WGT')
+birthweight$WGT[birthweight$WGT < 0] <- NA
+
+coding_speed<- merge(coding_speed,IRT2PL_person_no_cluster,by="MCASEID",all=T)
+coding_speed<- merge(coding_speed,momintel,by="MCASEID",all=T)
+coding_speed<- merge(coding_speed,raw1980intelligence,by="MCASEID",all=T)
+#coding_speed<- merge(coding_speed,birthweight,by="MCASEID",all=T)
+
+#############
+LinkedMDAN_discord_baby_z <- read.csv("C:/Dropbox/SAS/MyFolders/NLSYSAS/LinkedMDAN_discord_baby_z.csv", stringsAsFactors=FALSE)
+attach(LinkedMDAN_discord_baby_z)
+m1<- lm(WGTdiff ~ WGTmean + INTMOMmean + INTMOMdiff)
+summary(m1)
+m2<- lm(WGTdiff ~ WGTmean + CSMOMmean + CSMOMdiff)
+summary(m2)
+WGT=matrix(rbind(LinkedMDAN_discord_baby_z[,20],LinkedMDAN_discord_baby_z[,38]),ncol=1)
+WGT=WGT*sqrt(520.6538213)+116.0462417
+ID=matrix(rbind(Subject1Tag,Subject2Tag),ncol=1)
+m3<- lm(WGTdiff ~ WGTmean + CSMOMmean + CSMOMdiff)
+summary(m3)
+
+detach(LinkedMDAN_discord_baby_z)
+raw.data=data.frame(WGT,ID/100)
+names(raw.data)<-c("WGT","MCASEID")
+raw.data<- merge(raw.data,raw1980intelligence,by="MCASEID",all=F)
+raw.data<- merge(raw.data,rawcodingspeed,by="MCASEID",all=F)
+##########DIFF Scores##########
+library(NlsyLinks)
+
+summarystats<-data.frame(raw.data$rawcodingspeed,raw.data$rawAFQT,raw.data$WGT)
+library(tables)
+library(Hmisc)
+
+@ 
+       \beginjust\Large{Conscientiousness and intelligence consistently predict later health outcomes (Jokela \etal, 2013; Gotfredson \& Deary, 2004) across the life course (Roberts \etal, 2007).  However, conscientiousness and intelligence are seldom tested simultaneously (Deary \etal, 2010), making it difficult to determine whether both traits determine health or one measure is a proxy for the other. Intelligence and the conscientiousness facet of persistence are confounded under many assessment conditions (Duckworth, 2011). Moreover, persistence is associated with later health (Tores \etal, 2001), making the persistence-intelligence confound even more difficult to untangle.\smallskip\\  
+\hspace* {10 mm}Using the National Longitudinal Survey of Youth (NLSY) 1979, we examined the joint impact of intelligence and persistence assessed at adolescence on self-reported health at age 40. To control for genetic and environmental risk, we developed a sibling-based quasi-experimental method.}
+      \endjust\end{block}
+%-- Block 1-4
+\begin{block}{Data}
+\Large{\beginjust The National Longitudinal Survey of Youth 1979 (NLSY79) is a nationally representative household probability sample. In 1980, 12,686 adolescents between the ages of 14 and 22 were surveyed on a battery of measures, including the Armed Forces Vocational Aptitude Battery (ASVAB). Subscales of the ASVAB measure intelligence (AFQT) and persistence (Coding Speed). Participants are surveyed biannually by the Bureau of Labor Statistics (BLS).\endjust}\\\large{\begin{center}
+<<descript1, echo=FALSE, comment=NA, include=FALSE>>=
+booktabs()
+library(stargazer)
+@
+<<descript, echo=FALSE, comment=NA, results='asis'>>=
+stargazer(summarystats)
+@
+\end{center}}\end{block}
+  \begin{block}{Methods}
+      \Large{\beginjust To control for gene and environmental confounds, we (2014) have adapted Kenny's (2001) reciprocal standard dyad model. The adaptation controls for gene and shared environmental influences within a simple regression framework, by taking the difference between the two siblings:\endjust}
+      \vskip-5.5ex\begin{align*}
+&&Y_{diff} &= \beta_{0} + \beta_{1}\bar{Y} + \beta_{2}\bar{X} + \beta_{3}X_{diff}\\[2.5mm] 
+ \text{where,}&&Y_{diff} &= Y_{1i}-Y_{2i} \text{;  } \bar{Y} = \frac{Y_{1i}+Y_{2i}}{2} \\[2.5mm] 
+&&X_{diff} &= X_{1i}-X_{2i} \text{; } \bar{X} = \frac{X_{1i}+X_{2i}}{2} 
+      \end{align*}\vskip1.1ex
+  \Large{\beginjust The relative difference in outcomes ($Y_{diff}$) is predicted from the mean level of the outcome ($\bar{Y}$), the mean level of the predictor ($\bar{X}$), and the between-sibling predictor difference ($X_{diff}$; see fig. B). The mean levels support causal inference through at least a partial control for genes and shared environment. Therefore, we simultaneously evaluate the individual difference ($X_{diff}$) and the joint contribution of genes and shared environment ($\bar{Y}$ \& $\bar{X}$).\endjust}
+\end{block}
+
+    \end{column}%1
+<<models, echo=FALSE, comment=NA,include=FALSE>>=
+
+library(stargazer)
+
+stargazer(m1,m2, align=TRUE,intercept.bottom=FALSE, single.row=TRUE, 
+         # order=(c(3,5,7,2,4,6,8)),
+       #  covariate.labels=c("Diff Persistence", "Diff Intelligence","Diff Common Variance","Mean Persistence","Mean Intelligence","Mean Common Variance","Mean Health"), omit="Constant",
+         dep.var.labels=c("Difference in Health"),header=FALSE,omit.table.layout="m")
+@
+    %-- Column 2 ---------------------------------------------------
+    \begin{column}{0.55\linewidth}
+     \begin{block}{Figures}
+     \begin{columns}[c, totalwidth=\textwidth]
+      \begin{column}{.6\linewidth}\centering
+              
+                  % \begin{figure}[htb]
+                    <<graphs3, echo=FALSE, include=FALSE>>= 
+library(ggplot2)
+library(gtable)
+library(grid)
+library(gridExtra)
+ megafull <- read.csv("C:/Dropbox/Work/Research/Projects/NLSY/Not Current/difference scores and health/year1project/megafull.csv")
+grapheddiffrawintelligence<-abs(megafull$diffrawintelligence)
+shading<-c("navy","dodgerblue4","dodgerblue2","lightskyblue" ,"dodgerblue2","dodgerblue4","navy")
+
+##############
+        
+lm_eqn = function(df){
+    m = lm(y ~ x, df);
+    eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2, list(a = format(coef(m)[1], digits = 2), 
+              b = format(coef(m)[2], digits = 2), 
+             r2 = format(summary(m)$r.squared, digits = 3)))
+    as.character(as.expression(eq));                 
+}
+
+megafull$y = scale(megafull$rawcodingspeed_S1)
+megafull$x = scale(megafull$rawintelligence_S1)
+eq=lm_eqn(megafull)
+p<- ggplot(megafull, aes(y=rawcodingspeed_S1, x=rawintelligence_S1,colour=(diffrawintelligence))) + 
+  geom_point( size =2,alpha = 1,na.rm=TRUE) +
+  scale_colour_gradientn(name="Sibling \nDifference",colours=shading)+
+  #scale_x_continuous(expand = c(0, 0)) +
+  #scale_y_continuous(expand = c(0, 0)) + 
+  theme_bw() +   theme(axis.text=element_text(size=16),                                                                                                                                                                                  axis.title=element_text(size=16,face="bold"),
+                                                                                                                                                                                                                                                          #),
+  #axis.text = element_blank(), # axis.title = element_blank(),
+                          #axis.ticks =  element_blank(),
+                        #   legend.position="none",
+                          #axis.ticks.margin = unit(0, "lines"),
+  plot.title=element_text(size=16,face="bold"),
+                          axis.ticks.length = unit(0, "cm"),
+                          panel.background =element_blank())+ 
+  ylab("Coding Speed") +
+  xlab("AFQT Score") +
+  ggtitle("(A) Intelligence vs. Persistence")
+
+CI = (p + geom_text(aes(y = 1.5, x = 85.1, label = "AFQT = .70 CS + e", parse= FALSE), colour = "black"))
+
+
+
+png(filename=paste(file_drive,"/Dropbox/Work/Research/Projects/NLSY/ARP2015/ci.png",sep=""), width = 600, height = 500)
+CI
+#grid.arrange(Sibintel, Sibcs, ncol=2,heights=1, widths=c(1,.875))
+dev.off()
+library(ggplot2)
+library(gtable)
+library(grid)
+grapheddiffrawintelligence<-abs(megafull$diffrawintelligence)
+shading<-c("navy","dodgerblue4","dodgerblue2","lightskyblue" ,"dodgerblue2","dodgerblue4","navy")
+
+bw<-ggplot(megafull, aes(y=grapheddiffrawintelligence, x=rankdiffrawintelligence)) + geom_point(,na.rm=TRUE) + theme_bw() +  theme(axis.text=element_text(size=16),                                                                                                                                                                                  axis.title=element_text(size=16,face="bold"), plot.title=element_text(size=16,face="bold"),
+  #axis.text = element_blank(), # axis.title = element_blank(),
+                          #axis.ticks =  element_blank(),
+                          #axis.ticks.margin = unit(0, "lines"),
+                          axis.ticks.length = unit(0, "cm"),
+                          panel.background =element_blank()) + coord_cartesian(xlim = c(Min(megafull$rankdiffrawintelligence)-150, 10000)) + 
+  ylab("Difference in AFQT Score") +
+  xlab("Rank of Difference") +
+  ggtitle("(B) Sibling Differences in Intelligence")
+
+bwh<-ggplot(megafull, aes(x=grapheddiffrawintelligence, y=rankdiffrawintelligence)) + geom_point(size=.8,na.rm=TRUE) + theme_bw() +  theme(axis.text=element_text(size=16),                                                                                                                                                                                  axis.title=element_text(size=16,face="bold"), plot.title=element_text(size=16,face="bold"),
+  #axis.text = element_blank(), # axis.title = element_blank(),
+                          #axis.ticks =  element_blank(),
+                          #axis.ticks.margin = unit(0, "lines"),
+                          axis.ticks.length = unit(0, "cm"),
+                          panel.background =element_blank()) + coord_cartesian(ylim = c(Min(megafull$rankdiffrawintelligence)-150, 10000)) + 
+  xlab("Difference in AFQT Score") +
+  ylab("Rank of Difference") +
+  ggtitle("(B) Sibling Differences in Intelligence")
+
+
+file <-na.omit(data.frame(grapheddiffrawintelligence,megafull$rankdiffrawintelligence))
+y <- file$grapheddiffrawintelligence
+x <- file$megafull.rankdiffrawintelligence
+d.x <- density(x)
+d.y <- density(y)
+data<-data.frame(d.y$y,d.y$x)
+
+side<-ggplot(data, aes(y=d.y.x, x=d.y.y)) + geom_path(size=1) + theme_bw() +  theme(
+  axis.text = element_blank(),  axis.title = element_blank(),
+                          axis.ticks =  element_blank(),
+                          axis.ticks.margin = unit(0, "lines"),
+                          axis.ticks.length = unit(0, "cm"),
+                          panel.background =element_blank(),
+  panel.grid=element_blank(), panel.border=element_blank())
+
+top<-ggplot(megafull, aes(x=grapheddiffrawintelligence)) + geom_density() + theme_bw() +  theme(
+  axis.text = element_blank(),  #axis.title = element_blank(),
+                          axis.ticks =  element_blank(),
+                          axis.ticks.margin = unit(0, "lines"),
+                          axis.ticks.length = unit(0, "cm"),
+                          panel.background =element_blank(),
+  panel.grid=element_blank(), panel.border=element_blank())  + 
+  xlab("Density of Sib Differences") + 
+  ylab("") + theme(plot.margin = unit(c(.025,.05,.025,.025), "cm"))
+library(gridExtra)
+plot1 <- bw
+plot2 <- side
+png(filename=paste(file_drive,"/Dropbox/Work/Research/Projects/NLSY/SPSP15/bwv.png",sep=""),width = 550, height = 550)
+grid.arrange(plot1, plot2, ncol=2,heights=1, widths=c(1,.5))
+dev.off()
+
+plot1 <- bwh
+plot2 <- top
+png(filename=paste(file_drive,"/Dropbox/Work/Research/Projects/NLSY/SPSP15/bwh.png",sep=""),width = 500, height = 320)
+grid.arrange(plot2, plot1, ncol=1,heights=c(.33,1), widths=c(1,1),main=textGrob("AFQT", gp=gpar(fontsize=20)))
+dev.off()
+
+library(ggplot2)
+library(gtable)
+library(grid)
+library(gridExtra)
+grapheddiffrawintelligence<-abs(megafull$diffrawintelligence)
+shading<-c("navy","dodgerblue4","dodgerblue2","lightskyblue" ,"dodgerblue2","dodgerblue4","navy")
+
+##############
+#Sibs on intell            
+lm_eqn = function(df){
+    m = lm(y ~ x, df);
+    eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2, list(a = format(coef(m)[1], digits = 2), 
+              b = format(coef(m)[2], digits = 2), 
+             r2 = format(summary(m)$r.squared, digits = 3)))
+    as.character(as.expression(eq));                 
+}
+
+megafull$y = scale(megafull$rawintelligence_S2)
+megafull$x = scale(megafull$rawintelligence_S1)
+p<- ggplot(megafull, aes(y=rawintelligence_S2, x=rawintelligence_S1,colour=(diffrawintelligence))) + 
+  geom_point( size =2,alpha = 1,na.rm=TRUE) +
+  scale_colour_gradientn(name="Sibling \nDifference",colours=shading)+
+  #scale_x_continuous(expand = c(0, 0)) +
+  #scale_y_continuous(expand = c(0, 0)) + 
+  theme_bw() +  theme(axis.text=element_text(size=16),                                                                                                                                                                                  axis.title=element_text(size=16,face="bold"), plot.title=element_text(size=20,face="bold"),
+  #axis.text = element_blank(), # axis.title = element_blank(),
+                          #axis.ticks =  element_blank(),
+                          #axis.ticks.margin = unit(0, "lines"),
+    legend.position="none",
+                          axis.ticks.length = unit(0, "cm"),
+                          panel.background =element_blank())+ 
+  ylab("AFQT Score for Sib 2") +
+  xlab("AFQT Score for Sib 1") +
+  ggtitle("(C) Sibling Similarity on AFQT")
+windowsFonts(Times=windowsFont("TT Times New Roman"))
+Sibintel = p + geom_text(aes(y = 1.5, x = 91.1, label = "Sib1 = .66 Sib2 + e", parse= FALSE), colour = "black")
+png(filename=paste(file_drive,"/Dropbox/Work/Research/Projects/NLSY/SPSP15/int.png",sep=""), width = 500, height = 500)
+Sibintel
+dev.off()
+
+##################################
+megafull$y = scale(megafull$rawcodingspeed_S2)
+megafull$x = scale(megafull$rawcodingspeed_S1)
+eq=lm_eqn(megafull)
+p<- ggplot(megafull, aes(y=rawcodingspeed_S2, x=rawcodingspeed_S1,colour=(diffrawcodingspeed))) + 
+  geom_point( size =2,alpha = 1,na.rm=TRUE) +
+  scale_colour_gradientn(colours=shading)+
+  #scale_x_continuous(expand = c(0, 0)) +
+  #scale_y_continuous(expand = c(0, 0)) + 
+  theme_bw() +  theme(axis.text=element_text(size=16),                                                                                                                                                                                  axis.title=element_text(size=16,face="bold"), plot.title=element_text(size=16,face="bold"),
+  #axis.text = element_blank(), # axis.title = element_blank(),
+                          #axis.ticks =  element_blank(),
+                          #axis.ticks.margin = unit(0, "lines"),
+                          axis.ticks.length = unit(0, "cm"),
+                          legend.position="none",
+                          panel.background =element_blank())+ 
+  ylab("CS Score for Sib 2") +
+  xlab("CS Score for Sib 1") +
+  ggtitle("(D) Sibling Similarity on Coding Speed")
+Sibcs = (p + geom_text(aes(y = 1.5, x = 71.1, label = "Sib1 = .41 Sib2 + e", parse= FALSE),colour="black"))
+png(filename=paste(file_drive,"/Dropbox/Work/Research/Projects/NLSY/SPSP15/cs.png",sep=""), width = 500, height = 500)
+Sibcs
+dev.off()
+
+##################
+png(filename=paste(file_drive,"/Dropbox/Work/Research/Projects/NLSY/SPSP15/corih.png",sep=""), width = 1000, height = 500)
+
+grid.arrange(Sibintel, Sibcs, ncol=2,heights=1, widths=c(1,1))
+dev.off()
+
+png(filename=paste(file_drive,"/Dropbox/Work/Research/Projects/NLSY/SPSP15/coriv.png",sep=""), width = 500, height = 1000)
+
+grid.arrange(Sibintel, Sibcs, ncol=1,heights=1, widths=c(1,1))
+dev.off()
+@   
+                  \includegraphics[keepaspectratio=TRUE, width=1\columnwidth]{ci}\\
+                 \vspace{-1.1cm}        \includegraphics [keepaspectratio=TRUE,height=.4\columnwidth]{bwh} \\
+                  
+                    \end{column}           
+          \begin{column}{.35\linewidth}\centering% 
+
+\hspace{-3.1cm}     \includegraphics [keepaspectratio=TRUE,width=1.01\columnwidth %height=(2\columnwidth + 
+               ]{coriv} 
+                    \end{column}\end{columns}\end{block}
+\begin{column}{\linewidth}\begin{block}{Sibling Dyads}\vspace{13.5cm}\end{block}\end{column}
+\begin{column}{.65\linewidth}
+\vspace{-14.55cm}\large{\begin{table}[htbp] %\centering 
+%  \caption{} %  \label{} 
+\begin{tabular}{@{\extracolsep{0pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+%\\[-1.8ex]\hline 
+%\hline \\[-1.8ex] 
+% & \multicolumn{6}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-7} 
+\\[-1.8ex] & \multicolumn{6}{c}{\Large{Difference in Health}} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{$^{\boxdot}$(1)$^{\circledcirc}$} & \multicolumn{1}{c}{(2)$^{\circledcirc}$} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)} & \multicolumn{1}{c}{(5)} & \multicolumn{1}{c}{(6)}\\ 
+\cline{1-7}  \\[-1.8ex] 
+\textbf{Individual}\\
+Persistence & -0.099^{*}$ $(0.024) & -0.059^{*}$ $(0.014) & -0.023$ $(0.015) &  &  & -0.044^{*}$ $(0.013) \\ 
+Intelligence & -0.095^{*}$ $(0.024) & -0.037^{*}$ $(0.014) & -0.039^{*}$ $(0.015) &  & -0.052^{*}$ $(0.013) &  \\ 
+Common Variance &  &  &  & -0.053^{*}$ $(0.013) &  &  \\ 
+  \textbf{Family}\\
+Persistence & -0.053^{*}$ $(0.017) & -0.043^{*}$ $(0.013) & -0.057^{*}$ $(0.020) &  &  & -0.041^{*}$ $(0.013) \\ 
+Intelligence & -0.027$ $(0.017) & 0.014$ $(0.013) & 0.022$ $(0.020) &  & -0.022$ $(0.014) &  \\ 
+Common Variance &  &  &  & -0.034^{*}$ $(0.013) &  &  \\ 
+Health & 0.155^{*}$ $(0.014) & 0.155^{*}$ $(0.014) & 0.155^{*}$ $(0.014) & 0.154^{*}$ $(0.014) & 0.157^{*}$ $(0.014) & 0.154^{*}$ $(0.013) \\ 
+\cline{1-7}  \\[-1.8ex] 
+Observations & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} \\ 
+%R$^{2}$ & \multicolumn{1}{c}{0.043} & \multicolumn{1}{c}{0.043} & \multicolumn{1}{c}{0.043} & \multicolumn{1}{c}{0.042} & \multicolumn{1}{c}{0.041} & \multicolumn{1}{c}{0.042} \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.042} & \multicolumn{1}{c}{0.042} & \multicolumn{1}{c}{0.042} & \multicolumn{1}{c}{0.041} & \multicolumn{1}{c}{0.040} & \multicolumn{1}{c}{0.041} \\ 
+%Residual Std. Error & \multicolumn{1}{c}{0.841 (df = 4262)} & \multicolumn{1}{c}{0.841 (df = 4262)} & \multicolumn{1}{c}{0.841 (df = 4262)} & \multicolumn{1}{c}{0.841 (df = 4264)} & \multicolumn{1}{c}{0.842 (df = 4264)} & \multicolumn{1}{c}{0.842 (df = 4264)} \\ 
+F Statistic & \multicolumn{1}{c}{38.665$^{*}$ (df = 5; 4262)} & \multicolumn{1}{c}{38.665$^{*}$ (df = 5; 4262)} & \multicolumn{1}{c}{38.665$^{*}$ (df = 5; 4262)} & \multicolumn{1}{c}{62.551$^{*}$ (df = 3; 4264)} & \multicolumn{1}{c}{60.923$^{*}$ (df = 3; 4264)} & \multicolumn{1}{c}{61.693$^{*}$ (df = 3; 4264)} \\ 
+\cline{1-7}  
+\cline{1-7}  \\[-1.8ex] 
+\textit{Notes:} & \multicolumn{3}{l}{\begin{tabular}{l}\textbf{$^{\circledcirc}$} Persistence was partialed out of Intelligence\\\textbf{$^{\boxdot}$} Intelligence was partialed out of Persistence.\end{tabular}} &\multicolumn{6}{r}{\begin{tabular}{l}$^{*}$p$<$0.05\\ Standardized $\beta(SE)$\end{tabular}} \\ 
+\end{tabular} 
+\end{table} }
+\end{column} %\end{block}
+              % \end{columns}
+
+ %\vskip-2.7ex
+% \begin{columns}[t, totalwidth=\textwidth]
+ %                   \begin{column}{.6\linewidth}
+                           
+  %                  \end{column}
+                  %  \begin{column}{.38\linewidth}
+                       
+                  %  \end{column}
+   %            \end{columns}
+%\end{block}               
+
+                          
+      \end{column}%2
+        %-- Column 3 -----
+  %\begin{column}{0.20\linewidth}
+
+%\end{column}%2
+    %-- Column 4 -----
+    
+    \begin{column}{0.20\linewidth}
+    \begin{block}{Dyad Correlation Matrix}\vskip-4ex   
+<<descript12, echo=FALSE, comment=NA, include=FALSE>>=
+#cordata<-`s1geSelfHealth_filtered`
+##cordata$overlapav_S1 <-(cordata$OverlapI_S1+cordata$OverlapC_S1)/2
+#cordata$overlapav_S2 <-(cordata$OverlapI_S2+cordata$OverlapC_S2)/2
+#cordata<-cordata[,c("SelfHealth_S1","rawintelligence_S1","rawcodingspeed_S1","SelfHealth_S2","rawintelligence_S2","rawcodingspeed_S2","overlapav_S1","overlapav_S2")]
+#correlation.matrix <- Cor(cordata)
+#@
+#<<descript22, echo=FALSE, comment=NA, results='asis'>>=
+#stargazer(correlation.matrix, title="Correlation Matrix")
+@
+\Large{\begin{table}[!htbp] \centering 
+ % \caption{Correlation Matrix} 
+ % \label{} 
+\begin{tabular}{@{\extracolsep{5pt}} ccccccccc} 
+\\[-1.8ex]%\hline 
+\hline \\[-1.8ex] 
+                   &Self     & && & Sibling\\% Health & rawintelligence\_S1 & rawcodingspeed\_S1 & SelfHealth\_S2 & rawintelligence\_S2 & rawcodingspeed\_S2 & overlapav\_S1 & overlapav\_S2 \\ 
+\hline \\[-1.8ex] 
+Health          &  $1$            & && & $0.543$\\%$$-$0.281$ & $$-$0.233$ &     & $$-$0.235$ & $$-$0.197$ & $$-$0.274$ & $$-$0.231$ \\ 
+AFQT     & $0.281$ & $1$           & && $0.668$\\%$0.715$    & $$-$0.223$ & $0.668$    & $0.481$    & $0.903$    & $0.608$ \\ 
+CS      & $0.233$ & $0.715$  & $1$  &&$0.425$           \\%$$-$0.160$ & $0.480$    & $0.425$    & $0.946$    & $0.486$ \\ 
+%SelfHealth\_S2      & $0.543$    & $$-$0.223$ & $$-$0.160$ & $1$        & $$-$0.229$ & $$-$0.182$ & $$-$0.201$ & $$-$0.219$ \\ 
+%rawintelligence\_S2 & $$-$0.235$ & $0.668$    & $0.480$    & $$-$0.229$ & $1$        & $0.700$    & $0.604$    & $0.898$ \\ 
+%rawcodingspeed\_S2  & $$-$0.197$ & $0.481$    & $0.425$    & $$-$0.182$ & $0.700$    & $1$        & $0.484$    & $0.943$ \\ 
+Overlap      & $0.274$ & $0.903$    & $0.946$& $1$    & $0.580$ \\ %& $0.604$    & $0.484$    & $1$        & $0.580$ \\ 
+%overlapav\_S2       & $0.231$ & $0.608$    & $0.486$    & $$-$0.219$ & $0.898$    & $0.943$    & $0.580$    & $1$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} }\vskip-3ex   
+\end{block}
+      %-- Block 3-1
+      \begin{block}{Results}
+      \beginjust\Large{A series of kinship dyad regressions used the AFQT and Coding Speed scales from the ASVAB at Wave 1 to predict self-reported health at age 40. The models simultaneously evaluated the influence of the individual difference and the joint contribution of genes and shared environment.\smallskip\\
+            \textbf{Correlation Structure}\smallskip\\
+            Within sibling correlations revealed that health moderately correlated with intelligence, persistence, and their overlap (r $\approx$ .25). Persistence was strongly related to AFQT score (r = .72), more so than the correlations between siblings, which ranged from .43 to .67.\\
+            \textbf{Models}\smallskip\\
+Models 6, 5, and 4 examined the incremental impacts of persistence, intelligence, and their common variance -- respectively -- on health. Each found that respective individual difference was influential.\smallskip\\%, and that genes and shared environment were predictive.\smallskip\\
+\hspace{1cm}Model 3 examined the incremental impacts of both persistence and intelligence on health, without controlling for their covariance. Intelligence was significantly predicted health, while persistence was not.\smallskip\\ 
+\hspace{1cm}Model 2 examined the incremental impacts of both persistence and intelligence, on health, after partialing persistence from intelligence. Both significantly predicted health. Model 1 fully extracted the common variance by partialing persistence from intelligence and intelligence from persistence. Both still significantly predicted health with comparably sized effects.\smallskip\\
+%\hspace{1cm}Intelligence and persistence significantly predicted health, controlling for genes and shared environment. A 1 sd increase in persistence or intelligence difference increased the difference in health by .10. A 1 sd increase in family level of persistence increased the difference in health by .06. A 1 sd increase in family health predicted a reduction in the difference between siblings.\smallskip\\
+%Figures A, C, and D depict the relationship between intelligence and persistence between siblings. Figure B depicts the relationship within siblings.}
+   }\endjust\end{block}
+
+      %-- Block 3-2
+      %\begin{alertblock}{Conclusion}
+      %  This is an alert block.  Much less annoying than PowerPoint.  Copy and Paste from your
+      %  document. Overall, a great idea!
+      %\end{block}
+ \begin{block}{Summary}
+ \beginjust\Large{%Both individual level and family level (shared environment and genes) variables account for sibling differences in health. Increases in intelligence or persistence predict increases in health, while increases in family level health reduces the difference.\smallskip\\
+%These models indicate that persistence and intelligence impact health, even after controlling for genes and environment.
+\begin{itemize}
+%\item Both individual differences and famility level variables (shared environment and genes) explain sibling health differences.\\
+\item Intelligence and persistence individually predict health, even after controlling for genes and shared environment (Models 5, 6).\\
+\item Their shared covariance was an equally effective predictor, beyond genes and shared environment (4).\\
+\item When modeled jointly, partialed intelligence and persistence comparably accounted for health (1 , 2).\\
+\item When the covariance between intelligence and persistence was not modeled, intelligence masked the effect of persistence (3).\end{itemize}%\smallskip\\
+%Conclusion: The relationship between intelligence and persistence needs to be taken into account whenever using both predictors. 
+}\endjust\end{block}\end{column}
+  \end{columns}
+
+\end{frame}
+
+
+%\end{altenv}
+\end{document}

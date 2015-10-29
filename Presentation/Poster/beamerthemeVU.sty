@@ -1,0 +1,129 @@
+% adapted Philippe Dreuw and Thomas Deselaers
+% further adapted from edits by James Malcolm
+% finally, Shawn Lankton made some edits (www.shawnlankton.com)
+% Even More edits -- S.Mason Garrison (www.smasongarrison.com)
+\ProvidesPackage{beamerthemeVU}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<presentation>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{VUmaroon}{RGB}{90, 15, 59}  	% #fce94f
+\definecolor{VUblack}{RGB}{0,0,0}		% #fcaf3e
+\definecolor{VUgreen}{RGB}{7,	40,	0}  		%R0, G163, B214 ?
+\definecolor{VUred}{RGB}{158, 6, 33}		%R232, G4, B73
+\definecolor{VUindigo}{RGB}{42, 42 ,134}			%R0, G89, B131
+\definecolor{VUorange}{RGB}{200 ,92 ,26}		%R210, G17, B68
+\definecolor{VUblue}{RGB}{3, 44, 120}	%R232, G175, B16
+\definecolor{VUgold}{RGB}{162, 132, 72} 
+\definecolor{VUgolda}{RGB}{254, 188, 17}  %#990099
+
+\setbeamercolor{headline}{bg=VUblack}
+\setbeamercolor{footline}{bg=VUgold}
+\setbeamerfont{footline}{size=\Huge}
+\setbeamercolor{separation line}{bg=white}
+\setbeamercolor{title in headline}{fg=white}
+\setbeamercolor{author in headline}{fg=white}
+\setbeamercolor{institute in headline}{fg=white}
+
+\setbeamercolor{framesubtitle}{fg=VUblack, bg=gray}
+\setbeamercolor{author in head/foot}{fg=VUblack,bg=VUgold}
+\setbeamercolor{title in head/foot}{fg=VUblack,bg=VUgold}
+\setbeamercolor{website in footline}{fg=VUblack,bg=VUgold}
+\setbeamercolor{email in footline}{fg=VUblack,bg=VUgold}
+
+\setbeamercolor*{normal text}{fg=black, bg=white}
+\setbeamercolor*{block body}{fg=black,bg=white}
+\setbeamercolor*{block title}{fg=VUblack,bg=VUgold}
+\setbeamerfont{block title}{size=\Huge,series=\sc\bf}
+\setbeamercolor{upper separation line head}{fg=black}
+
+% \setbeamertemplate{blocks}[rounded][shadow=true]
+
+% \setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{navigation symbols}{}  % no navigation on a poster
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newsavebox{\squaredblocktext}%
+\setbeamertemplate{block begin}{
+  \vskip.0ex
+  \begin{beamercolorbox}[rounded=true,shadow=true,leftskip=2ex,colsep*=.5ex]{block title}%
+    \usebeamerfont*{block title}{\Huge \insertblocktitle}
+  \end{beamercolorbox}
+
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[rounded=true,shadow=true,colsep*=.5ex,sep=.5ex, vmode]{block body}%
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.5ex}\vbox{}%
+  }
+  \setbeamertemplate{block end}{
+  \end{beamercolorbox}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{
+  \leavevmode
+
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+    \begin{columns}[T]
+      \begin{column}{.02\paperwidth}
+      \end{column}
+      \begin{column}{.07\paperwidth}
+          %  \begin{column}{.25\paperwidth}
+        \centering
+        \vskip8ex
+        %\includegraphics[height=0.07\paperwidth,keepaspectratio]{logoleft}
+        \vspace{1pt}
+      \end{column}
+      \begin{column}{.675\paperwidth}
+        \vskip8ex
+        \raggedleft
+        \usebeamercolor{title in headline}{\color{fg}\textbf{\Huge{\inserttitle}}\\[2.5ex]}
+        \usebeamercolor{author in headline}{\color{fg}\Huge{\insertauthor}\\[0ex]}
+        \usebeamercolor{institute in headline}{\color{fg}\LARGE{\insertinstitute}\\[0ex]}
+        \vskip0ex
+      \end{column}
+      \begin{column}{.25\paperwidth}
+        \centering
+        \vskip4ex
+        \includegraphics[height=0.07\paperwidth,keepaspectratio]{graphics\logo}
+        \vspace{1pt}
+      \end{column}
+      \begin{column}{.03\paperwidth}
+      \end{column}
+    \end{columns}
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=5\paperwidth]{lower separation line head}
+    \rule{0pt}{1pt}
+  \end{beamercolorbox}     \vskip-2.0ex
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+  \leavevmode%
+  \begin{beamercolorbox}[ht=1ex,leftskip=1cm,rightskip=1cm]{author in head/foot}%
+    \usebeamercolor{website in footline}{\color{fg} \footleft}
+    \hfill
+    \usebeamercolor{email in footline}{\color{fg} \footright}
+    \vskip1ex
+  \end{beamercolorbox}
+  \vskip0pt%
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Display a grid to help align images ... and it looks nice with this color scheme
+%\beamertemplategridbackground[1cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \Mode<all>

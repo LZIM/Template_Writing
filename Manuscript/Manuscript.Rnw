@@ -1,0 +1,257 @@
+\documentclass[a4paper,man,apacite,natbib,12pt]{apa6}
+\usepackage{../Common/style/Mason}
+\usepackage{listings}
+\usepackage{inconsolata}
+%%%%%%%%%%%% NOTES %%%%%%%%%%%%
+% Journal Article Reporting Standards (JARS) retrieved from:
+%% APA Publications and Communications Board Working Group on Journal Article Reporting Standards (2008). Reporting standards for research in psychology: why do we need them? What might they be?. The American Psychologist, 63(9), 839-851.
+%% URL: https://www.apa.org/pubs/authors/jars.pdf
+
+%%%%%%%%%%%% Title and Title Page %%%%%%%%%%%%
+% JARS
+%% Identify variables and theoretical issues under investigation and the relationship between them.
+%% Author note contains acknowledgment of special circumstances:
+%%% Use of data also appearing in previous publications, dissertations, or conference papers
+%%% Sources of funding or other support
+%%% Relationships that may be perceived as conflicts of interest
+%
+% Title
+\title{Title Long: Look a Snappy Subtitle}
+\shorttitle{Short}
+%
+% Authors and Affliations
+\threeauthors{Author One}{Author Two}{Author Three}
+\threeaffiliations{One University}{University of Two}{Three College}
+%
+% Author Note
+\authornote{\input{../Common/content/title/authornote.txt}}
+%
+%%%%%%%%%%%% Abstract %%%%%%%%%%%%
+% JARS
+%% Problem under investigation
+%% Participants or subjects; specifying pertinent characteristics; in animal research, include genus and species
+%% Study method, including:
+%%% Sample size
+%%% Any apparatus used
+%%% Outcome measures
+%%% Data-gathering procedures
+%%% Research design (e.g., experiment, observational study)
+%% Findings, including effect sizes and confidence intervals and/or statistical significance levels
+%% Conclusions and the implications or applications
+%
+% Abstract
+\abstract{Last compile was \today\ at \currenttime\\
+%% Empirical Study
+\input{../Common/content/title/abstract_empreport.txt}}
+%% Literature Review or Meta-analysis
+%%% \input{../Common/content/title/abstract_litreview.txt}}
+%% Theory-oriented Paper
+%%% \input{../Common/content/title/abstract_theorypaper.txt}}
+%% Methodological Paper
+%%% \input{../Common/content/title/abstract_method.txt}}
+%% Case Study
+%%% \input{../Common/content/title/abstract_casestudy.txt}}
+%
+\begin{document}
+\maketitle
+%%%%%%%%%%%% R Set-Up %%%%%%%%%%%%
+<<setup,echo=FALSE>>=
+  options(width=60)
+  listing <- function(x, options) {
+    paste("\\begin{lstlisting}[style=Rsettings]\n",
+      x, "\\end{lstlisting}\n", sep = "")
+  }
+  knit_hooks$set(source=listing, output=listing)
+@
+%
+<<dataorganization,include=FALSE>>=
+file_drive= "C:"
+#file_drive="E:"
+directory = getwd()
+content_folder = paste0(directory,"/Common/content")
+data_folder = paste0(content_folder,"/data")
+mplus_folder = paste0(content_folder,"/mplusautomation")
+tables_folder = paste0(content_folder,"/tables")
+slides_folder = paste0(content_folder,"/slides")
+@
+%
+%%%%%%%%%%%% Introduction %%%%%%%%%%%%
+% JARS
+%% The importance of the problem:
+%%% Theoretical or practical implications
+%% Review of relevant scholarship:
+%%% Relation to previous work
+%%% If other aspects of this study have been reported on previously, how the current report differs from these earlier reports
+%% Specific hypotheses and objectives:
+%%% Theories or other means used to derive hypotheses
+%%% Primary and secondary hypotheses, other planned analyses
+%% How hypotheses and research design relate to one another
+%
+%\section{Introduction}
+% Introduce the Major Problem
+\input{../Common/content/introduction/introduce_the_problem.txt}\\
+\input{../Common/content/introduction/importance_of_problem.txt}
+%
+% Relevant Scholarship
+\subsection{Relevant Scholarship}
+\input{../Common/content/introduction/relevant_scholarship.txt}\\
+%
+% Current Study
+\subsection{Current Study}
+\input{../Common/content/introduction/current_study.txt}
+%
+%%%%%%%%%%%% Method %%%%%%%%%%%%
+% JARS
+%% Participant characteristics 
+%%% Eligibility and exclusion criteria, including any restrictions based on demographic characteristics
+%%% Major demographic characteristics as well as important topic-specific characteristics (e.g., achievement level in studies of educational interventions), or in the case of animal research, genus and species
+%%
+%% Sampling procedures
+%%% Procedures for selecting participants, including:
+%%%% The sampling method if a systematic sampling plan was implemented
+%%%% Percentage of sample approached that participated
+%%%% Self-selection (either by individuals or units, such as schools or clinics)
+%%% Settings and locations where data were collected
+%%% Agreements and payments made to participants
+%%% Institutional review board agreements, ethical standards met, safety monitoring
+%%
+%% Sample size, power, and precision
+%%% Intended sample size
+%%% Actual sample size, if different from intended sample size
+%%% How sample size was determined:
+%%%% Power analysis, or methods used to determine precision of parameter estimates
+%%%% Explanation of any interim analyses and stopping rules
+%%
+%% Measures and covariates 
+%%% Definitions of all primary and secondary measures and covariates:
+%%%% Include measures collected but not included in this report
+%%% Methods used to collect data
+%%% Methods used to enhance the quality of measurements:
+%%%% Training and reliability of data collectors
+%%%% Use of multiple observations
+%%% Information on validated or ad hoc instruments created for individual studies, for example, psychometric and biometric properties
+%%
+%% Research design 
+%%% Whether conditions were manipulated or naturally observed
+%%% Type of research design; provided in Table 3 are modules for:
+%%%% Randomized experiments (Module A1)
+%%%% Quasi-experiments (Module A2)
+%%% Other designs would have different reporting needs associated with them
+%
+\section{Method}
+\input{../Common/content/method/method.txt}
+%
+% Subject Characteristics
+\subsection{Subject Characteristics}
+\input{../Common/content/method/subjects.txt}
+%
+% Sampling Procedure
+\subsection{Sampling Procedure}
+\input{../Common/content/method/sampling.txt}
+%
+% Sample size, power, and precision
+\subsection{Sample Size, Power, and Precision}
+\input{../Common/content/method/power.txt}
+%
+% Measures and Covariates
+\subsection{Measures and Covariates}
+\input{../Common/content/method/measures_and_covariates.txt}
+%
+%% Properties of Instrument A
+\subsubsection{Properties of Instrument A}
+\input{../Common/content/method/instrument_a.txt}
+%
+%% Properties of Instrument B
+\subsubsection{Properties of Instrument B}
+\input{../Common/content/method/instrument_b.txt}
+%
+% Research Design
+\subsection{Research Design}
+\input{../Common/content/method/design.txt}
+%
+% Experimental manipulations or interventions
+\subsection{Experimental Manipulations or Interventions}
+\input{../Common/content/method/experimental_manipulations.txt}
+%
+%%%%%%%%%%%% Results %%%%%%%%%%%%
+% JARS
+%% Participant flow 
+%%% Total number of participants
+%%% Flow of participants through each stage of the study
+%%
+%% Recruitment 
+%%% Dates defining the periods of recruitment and repeated measurements or follow-up
+%%
+%% Statistics and data analysis
+%%% Information concerning problems with statistical assumptions and/or data distributions that could affect the validity of findings
+%%% Missing data:
+%%%% Frequency or percentages of missing data
+%%%% Empirical evidence and/or theoretical arguments for the causes of data that are missing, for example, missing completely at random (MCAR), missing at random (MAR), or missing not at random (MNAR)
+%%%% Methods for addressing missing data, if used
+%%% For each primary and secondary outcome and for each subgroup, a summary of:
+%%%% Cases deleted from each analysis
+%%%% Subgroup or cell sample sizes, cell means, standard deviations, or other estimates of precision, and other descriptive statistics
+%%%% Effect sizes and confidence intervals
+%%% For inferential statistics (null hypothesis significance testing), information about:
+%%%% The a priori Type I error rate adopted
+%%%% Direction, magnitude, degrees of freedom, and exact p level, even if no significant effect is reported
+%%% For multivariable analytic systems 
+%%%% (e.g., multivariate analyses of variance, regression analyses, structural equation modeling analyses, and hierarchical linear modeling) 
+%%%% also include the associated variance–covariance (or correlation) matrix or matrices
+%%% Estimation problems (e.g., failure to converge, bad solution spaces), anomalous data points
+%%% Statistical software program, if specialized procedures were used
+%%% Report any other analyses performed, including adjusted analyses, indicating those that were prespecified and those that were exploratory (though not necessarily in level of detail of primary analyses)
+%%
+%% Ancillary analyses 
+%%% Discussion of implications of ancillary analyses for statistical error rates
+\section{Results}
+\input{../Common/content/results/results.txt}
+%
+% Participant flow
+\subsection{Participant Flow}
+\input{../Common/content/results/participant_flow.txt}
+%
+% Recruitment
+\subsection{Recruitment}
+\input{../Common/content/results/recruitment.txt}
+%
+% Statistics and Data Analysis
+\subsection{Statistics and Data Analysis}
+\input{../Common/content/results/statistics_and_data_analysis.txt}
+%
+% Ancillary Analyses
+\subsection{Ancillary Analyses}
+\input{../Common/content/results/ancillary_analyses.txt}
+%
+%% Intervention or Manipulation Fidelity.
+\subsection{Intervention or Manipulation Fidelity}
+\input{../Common/content/results/manipulation_fidelity.txt}
+\input{../Common/content/results/intervention.txt}
+
+%%%%%%%%%%%% Discussion %%%%%%%%%%%%
+% JARS
+%% Statement of support or nonsupport for all original hypotheses:
+%%% Distinguished by primary and secondary hypotheses
+%%% Post hoc explanations
+%% Similarities and differences between results and work of others
+%% Interpretation of the results, taking into account:
+%%% Sources of potential bias and other threats to internal validity
+%%% Imprecision of measures
+%%% The overall number of tests or overlap among tests, and
+%%% Other limitations or weaknesses of the study
+%% Generalizability (external validity) of the findings, taking into account:
+%%% The target population
+%%% Other contextual issues
+%% Discussion of implications for future research, program, or policy
+\section{Discussion}
+\input{../Common/content/discussion/discussion.txt}\nocite{A}\nocite{*}
+
+%%%%%%%%%%%% Tables %%%%%%%%%%%%
+\section{Tables}
+\pagebreak
+%%%%%%%%%%%% Figures %%%%%%%%%%%%
+\section{Figures}
+\pagebreak
+%%%%%%%%%%%% References %%%%%%%%%%%%
+\bibliography{zNOS-Bibliography}
+\end{document}

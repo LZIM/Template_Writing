@@ -1,0 +1,6 @@
+%State hypotheses and their correspondence to research design. After you have introduced the problem and have developed the background material, explain your approach to solving the problem. In empirical studies, this usually involves stating your hypotheses or specific question and describing how these were derived from theory or are logically connected to previous data and argumentation. Clearly develop the rationale for each. Also, if you have some hypotheses or questions that are central to your purpose and others that are secondary or exploratory, state this prioritization. Explain how the research design permits the inferences needed to examine the hypothesis or provide estimates in answer to the question.
+To summarize, the current study examines the relationship between APPLES and BANANAS, using DEFINING CHARACTERISTICS OF THE SAMPLE sample. This examination extends the TOPIC literature in several key ways. We \begin{enumerate}\item DID THING ONE; \item DID THING TWO; and \item DID THING THREE.\end{enumerate}
+
+We made the following predictions, based primary upon CITATION and CITATION:\\
+1. \hypothesis{ONE} QUESTION ONE. HYPOTHESIS ONE. REASONS FOR HYPOTHESIS ONE.\\
+2. \hypothesis{TWO} QUESTION TWO. HYPOTHESIS TWO. REASONS FOR HYPOTHESIS TWO.\\

@@ -1,0 +1,46 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Beta%
+}{%
+Beta%
+}{%
+{\protect \APACyear {1900}}%
+}]{%
+A}
+\APACinsertmetastar {%
+A}%
+\begin{APACrefauthors}%
+Beta.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1900}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{Alpha}} {{Alpha}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Gamma}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Delta%
+}{%
+Delta%
+}{%
+{\protect \APACyear {1999}}%
+}]{%
+G}
+\APACinsertmetastar {%
+G}%
+\begin{APACrefauthors}%
+Delta.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1999}.
+\unskip\
+\newblock
+\APACrefbtitle {{Gamma}} {{Gamma}}\ \APACtypeAddressSchool {\BUPhD}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

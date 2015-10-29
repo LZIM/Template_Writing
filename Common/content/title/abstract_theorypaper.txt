@@ -1,0 +1,1 @@
+%An abstract for a theory-oriented paper should describe how the theory or model works and/or the principles on which it is based and what phenomena the theory or model accounts for and linkages to empirical results.

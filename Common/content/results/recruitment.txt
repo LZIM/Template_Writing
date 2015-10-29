@@ -1,0 +1,1 @@
+Provide dates defining the periods of recruitment and follow-up and the primary sources of the potential subjects, where appropriate. If these dates differ by group, provide the values for each group.

@@ -1,0 +1,9 @@
+%Introduce the problem. The body of a manuscript opens with an introduction that presents the specific problem under study and describes the research strategy. Because the introduction is clearly identified by its position in the manuscript, it does not carry a heading labeling it the introduction.
+%Before writing the introduction, consider the following questions:
+%• Why is this problem important?
+%• How does the study relate to previous work in the area? If other aspects of this study have been reported previously, how does this report differ from, and build on, the earlier report?
+%• What are the primary and secondary hypotheses and objectives of the study, and
+%• what, if any, are the links to theory?
+%• How do the hypotheses and research design relate to one another?
+%• What are the theoretical and practical implications of the study?
+%A good introduction answers these questions in just a few pages and, by summarizing the relevant arguments and the past evidence, gives the reader a firm sense of what was done and why.

@@ -1,0 +1,1 @@
+%An abstract for a methodological paper should describe the general class of methods being discussed; the essential features of the proposed method; the range of application of the proposed method; and in the case of statistical procedures, some of its essential features such as robustnessay power efficiency

@@ -1,0 +1,8 @@
+%Sample size, power, and precision. 
+Along with the description of subjects, give the intended size of the sample and number of individuals meant to be in each condition, if separate conditions were used. 
+
+State whether the achieved sample differed in known ways from the target population. Conclusions and interpretations should not go beyond what the sample would warrant. State how this intended sample size was determined (e.g., analysis of power or pre- cision). If interim analysis and stopping rules were used to modify the desired sample size, describe the methodology and results. 
+
+When applying inferential statistics, take seriously the statistical power considerations associated with the tests of hypotheses. Such considerations relate to the likelihood of correctly rejecting the tested hypotheses, given a particular alpha level, effect size, and sample size. In that regard, routinely provide evidence that the study has sufficient power to detect effects of substantive interest. Be similarly careful in discussing the role played by sample size in cases in which not rejecting the null hypothesis is desirable (i.e., when one wishes to argue that there are no differences), when testing various assumptions underlying the statistical model adopted (e.g., normality, homogeneity of variance, homogeneity of regression), and in model fitting.
+
+Alternatively, use calculations based on a chosen target precision (confidence interval width) to determine sample sizes. Use the resulting confidence intervals to justify conclusions concerning effect sizes (e.g., that some effect is negligibly small).

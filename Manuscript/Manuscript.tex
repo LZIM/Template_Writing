@@ -1,0 +1,173 @@
+\documentclass[a4paper,man,apacite,natbib,12pt]{apa6}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{../Common/style/Mason}
+\usepackage{listings}
+\usepackage{inconsolata}
+
+%%%%%%%%%%%% Title %%%%%%%%%%%%
+\title{Title Long: Look a Snappy Subtitle}
+\shorttitle{Short}
+
+% Authors and Affliations
+\threeauthors{Author One}{Author Two}{Author Three}
+\threeaffiliations{One University}{University of Two}{Three College}
+
+% Author Note
+\authornote{\input{../Common/content/title/authornote.txt}}
+
+% Abstract
+\abstract{Last compile was \today\ at \currenttime\\
+%% Empirical Study
+\input{../Common/content/title/abstract_empreport.txt}}
+%% Literature Review or Meta-analysis
+%%% \input{../Common/content/title/abstract_litreview.txt}}
+%% Theory-oriented Paper
+%%% \input{../Common/content/title/abstract_theorypaper.txt}}
+%% Methodological Paper
+%%% \input{../Common/content/title/abstract_method.txt}}
+%% Case Study
+%%% \input{../Common/content/title/abstract_casestudy.txt}}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\maketitle
+%%%%%%%%%%%% R Set-Up %%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%% Introduction %%%%%%%%%%%%
+%\section{Introduction}
+% Introduce the Major Problem
+\input{../Common/content/introduction/introduce_the_problem.txt}\\
+\input{../Common/content/introduction/importance_of_problem.txt}
+
+% Relevant Scholarship
+\subsection{Relevant Scholarship}
+\input{../Common/content/introduction/relevant_scholarship.txt}\\
+
+% Current Study
+\subsection{Current Study}
+\input{../Common/content/introduction/current_study.txt}
+
+%%%%%%%%%%%% Method %%%%%%%%%%%%
+\section{Method}
+\input{../Common/content/method/method.txt}
+
+% Subject Characteristics
+\subsection{Subject Characteristics}
+\input{../Common/content/method/subjects.txt}
+
+% Sampling Procedure
+\subsection{Sampling Procedure}
+\input{../Common/content/method/sampling.txt}
+
+% Sample size, power, and precision
+\subsection{Sample Size, Power, and Precision}
+\input{../Common/content/method/power.txt}
+
+% Measures and Covariates
+\subsection{Measures and Covariates}
+\input{../Common/content/method/measures_and_covariates.txt}
+
+%% Properties of Instrument A
+\subsubsection{Properties of Instrument A}
+\input{../Common/content/method/instrument_a.txt}
+
+%% Properties of Instrument B
+\subsubsection{Properties of Instrument B}
+\input{../Common/content/method/instrument_b.txt}
+
+% Research Design
+\subsection{Research Design}
+\input{../Common/content/method/design.txt}
+
+% Experimental manipulations or interventions
+\subsection{Experimental Manipulations or Interventions}
+\input{../Common/content/method/experimental_manipulations.txt}
+
+%%%%%%%%%%%% Results %%%%%%%%%%%%
+\section{Results}
+\input{../Common/content/results/results.txt}
+
+% Recruitment
+\subsection{Recruitment}
+\input{../Common/content/results/recruitment.txt}
+
+% Statistics and Data Analysis
+\subsection{Statistics and Data Analysis}
+\input{../Common/content/results/statistics_and_data_analysis.txt}
+
+% Ancillary Analyses
+\subsection{Ancillary Analyses}
+\input{../Common/content/results/ancillary_analyses.txt}
+
+% Participant flow
+\subsection{Participant Flow}
+\input{../Common/content/results/participant_flow.txt}
+
+% Intervention or Manipulation Fidelity.
+\subsection{Intervention or Manipulation Fidelity}
+\input{../Common/content/results/manipulation_fidelity.txt}
+\input{../Common/content/results/intervention.txt}
+
+%%%%%%%%%%%% Discussion %%%%%%%%%%%%
+\section{Discussion}
+\input{../Common/content/discussion/discussion.txt}\nocite{A}\nocite{*}
+
+%%%%%%%%%%%% Tables %%%%%%%%%%%%
+\section{Tables}
+\pagebreak
+%%%%%%%%%%%% Figures %%%%%%%%%%%%
+\section{Figures}
+\pagebreak
+%%%%%%%%%%%% References %%%%%%%%%%%%
+\bibliography{zNOS-Bibliography}
+\end{document}

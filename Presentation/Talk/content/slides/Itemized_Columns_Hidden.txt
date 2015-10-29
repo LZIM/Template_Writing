@@ -1,0 +1,20 @@
+\frame{
+\frametitle{Cluster A (Weird)}
+\begin{columns}
+\begin{column}{6cm}
+\begin{itemize}
+\item<1->{Ennui crucifix anim,}
+\alt<1>{\begin{itemize}\item occupy Helvetica tilde 3 wolf moon quis reprehenderit messenger bag umami meh. Reprehenderit laborum irure messenger bag nihil proident, sapiente consequat bitters\end{itemize}}{\item<2-> Vice master cleanse}
+\alt<2>{\begin{itemize}\item Narwhal semiotics cillum do, delectus laboris Austin Marfa street art Williamsburg swag. Vice accusamus mollit nihil cliche ethical. Street art narwhal nisi ullamco 8-bit eu.\end{itemize}}{\item<3-> fanny pack nihil photo }
+\alt<3>{\begin{itemize}\item booth tofu Odd Future wolf put a bird on it. Nisi fap tofu id, craft beer Intelligentsia pork belly Pitchfork health goth. Gluten-free cliche tousled Austin, vegan Helvetica bespoke PBR forage biodiesel fingerstache letterpress actually.\end{itemize}}{ }
+\end{itemize}
+\vspace{3cm} 
+\end{column}
+\begin{column}{4cm}
+\begin{overprint}
+\hspace*{-.8cm}\includegraphics<1>[width=1.2\textwidth]{cat}
+\includegraphics<2>[width=1.2\textwidth]{cat1}
+\includegraphics<3>[width=1.2\textwidth]{cat2}
+\end{overprint}
+\end{column}
+\end{columns}}

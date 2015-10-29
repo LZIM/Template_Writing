@@ -1,0 +1,4 @@
+\subsubsection{Baseline Data}Be sure that baseline demographic and/or clinical characteristics of each group are provided.
+
+\subsubsection{Statistics and Data Analysis}In studies reporting the results of experimental manipulations or interventions, clarify whether the analysis was by intent-to-treat. That is, were all participants assigned to conditions included in the data analysis regardless of whether they actually received the intervention, or were only participants who completed the intervention satisfactorily included? Give a rationale for the choice.
+\subsubsection{Adverse Events}If interventions were studied, detail all important adverse events (events with serious consequences) and/or side effects in each intervention group.
