@@ -1,0 +1,64 @@
+\documentclass[xcolor=x11names,compress]{beamer}
+\usepackage{../Common/style/Mason}
+\usepackage{../Common/style/MasonBeamer}
+
+\begin{document}
+
+<<setup, include=FALSE>>=
+
+#LIBRARIES
+library(knitr)
+library(ggplot2)
+library(effects)
+library(stargazer)
+
+#FUNCTIONS
+
+
+@
+
+<<data, include=FALSE>>=
+#temp = list.files(path=data_folder,pattern="*.csv")
+#for (i in 1:length(temp)) assign(temp[i], read.csv(paste0(data_folder,temp[i])))
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 TITLE PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{../Common/content/slides/Title.txt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                TABLE OF CONTENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{../Common/content/slides/Tableofcontents.txt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                BACKGROUND
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Background}
+
+\input{../Common/content/slides/Itemized.txt}
+%\input{../Common/content/slides/Itemized_Diagram.txt} BROKEN
+\input{../Common/content/slides/Itemized_Framebreaks.txt}
+\input{../Common/content/slides/Itemized_Columns_Hidden.txt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 METHODS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methodology}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 RESULTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{References}
+\input{../Common/content/slides/References.txt}
+\end{document}

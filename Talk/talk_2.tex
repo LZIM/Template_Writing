@@ -48,50 +48,8 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
-
-%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{graphicx}\graphicspath{{graphics/}}
-\usepackage{tikz}
-\usetikzlibrary{decorations.fractals,calc,arrows,positioning}
-\usepackage[first=-30, last=30]{lcg}
-\usepackage{apacite}
-\usepackage{natbib}
-\usepackage{wrapfig}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\useoutertheme[subsection=false,shadow]{miniframes}
-\useinnertheme{default}
-\usefonttheme{serif}
-\usepackage{palatino}
-
-\setbeamerfont{title like}{shape=\scshape}
-\setbeamerfont{frametitle}{shape=\scshape}
-
-\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
-\setbeamercolor*{normal text}{fg=black,bg=white} 
-\setbeamercolor*{alerted text}{fg=red} 
-\setbeamercolor*{example text}{fg=black} 
-\setbeamercolor*{structure}{fg=black} 
- 
-\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
-\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
-
-\renewcommand{\(}{\begin{columns}}
-\renewcommand{\)}{\end{columns}}
-\newcommand{\<}[1]{\begin{column}{#1}}
-\renewcommand{\>}{\end{column}}
-
-%% New Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand*{\RandomShape}[1][DeepSkyBlue4]{
-\begin{tikzpicture}[decoration=Koch curve type 2] 
-	\pgfmathsetmacro{\Xa}{rand*.1}
-	\pgfmathsetmacro{\Xb}{rand*.1}
-		\draw[#1] decorate{ decorate{ decorate{ (0,\Xb) -- (3,\Xa) }}}; 
-	\end{tikzpicture}
-}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{../Common/style/Mason}
+\usepackage{../Common/style/MasonBeamer}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
 
@@ -103,23 +61,23 @@
 %                 TITLE PAGE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{content/slides/Title.txt}
+\input{../Common/content/slides/Title.txt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                TABLE OF CONTENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{content/slides/Tableofcontents.txt}
+\input{../Common/content/slides/Tableofcontents.txt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                BACKGROUND
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
-\subsection{Itemized}
-\input{content/slides/Itemized.txt}
-%\input{content/slides/Itemized_Diagram.txt} BROKEN
-\input{content/slides/Itemized_Framebreaks.txt}
-\input{content/slides/Itemized_Columns_Hidden.txt}
+
+\input{../Common/content/slides/Itemized.txt}
+%\input{../Common/content/slides/Itemized_Diagram.txt} BROKEN
+\input{../Common/content/slides/Itemized_Framebreaks.txt}
+\input{../Common/content/slides/Itemized_Columns_Hidden.txt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                 METHODS
@@ -137,5 +95,5 @@
 %                 REFERENCES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{References}
-\input{content/slides/References.txt}
+\input{../Common/content/slides/References.txt}
 \end{document}

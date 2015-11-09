@@ -1,4 +1,4 @@
-\documentclass[a4paper,man,apacite,natbib,12pt]{apa6}
+\documentclass[a4paper,man,apacite,natbib,12pt,longtable]{apa6}
 \usepackage{../Common/style/Mason}
 \usepackage{listings}
 \usepackage{inconsolata}
@@ -55,19 +55,44 @@
 \begin{document}
 \maketitle
 %%%%%%%%%%%% R Set-Up %%%%%%%%%%%%
-<<setup,echo=FALSE>>=
+<<sweave,echo=FALSE>>=
+####### Sweave/Knitr Set Up #######
+# Options
+## R code width
   options(width=60)
+##
+## Scientif Notation, magnitude needed for 
+  options(scipen=5)
+##
+## Round
+  options(digits=3)
+#
+# R Style
+## Allows wraping
   listing <- function(x, options) {
     paste("\\begin{lstlisting}[style=Rsettings]\n",
       x, "\\end{lstlisting}\n", sep = "")
   }
+## Incorporate modified Listings into Output
   knit_hooks$set(source=listing, output=listing)
+#
+# Knitr defaults
+## Override
+  knit_hooks$set(document = function(x) {sub('\\usepackage[]{color}', '\\usepackage{xcolor}', x, fixed = TRUE)})
 @
 %
 <<dataorganization,include=FALSE>>=
+####### Data Organization
+# File Structure
 file_drive= "C:"
 #file_drive="E:"
-directory = getwd()
+#
+
+file_drive= "C:"
+#Current= "Current Projects"
+##file_drive="E:"
+#directory = paste0(file_drive,"/Dropbox/Work/Research/Projects/",Current,"/Timing of Divorce/")
+directory = paste0(file_drive,"/Dropbox/Work/Templates/Sweave/Writing")
 content_folder = paste0(directory,"/Common/content")
 data_folder = paste0(content_folder,"/data")
 mplus_folder = paste0(content_folder,"/mplusautomation")

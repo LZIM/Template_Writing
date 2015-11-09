@@ -9,7 +9,7 @@
 \date{
 \RandomShape[DeepSkyBlue4]  
 	\\
-	\vspace{.5cm}
+	%\vspace{.5cm}
 	\today
 }
 \titlepage
