@@ -91,13 +91,19 @@ file_drive= "C:"
 file_drive= "C:"
 #Current= "Current Projects"
 ##file_drive="E:"
-#directory = paste0(file_drive,"/Dropbox/Work/Research/Projects/",Current,"/Timing of Divorce/")
-directory = paste0(file_drive,"/Dropbox/Work/Templates/Sweave/Writing")
+
+directory = paste0(file_drive,"/Dropbox/Lab/zTemplates/LaTeX/Writing")
 content_folder = paste0(directory,"/Common/content")
 data_folder = paste0(content_folder,"/data")
-mplus_folder = paste0(content_folder,"/mplusautomation")
+mplus_folder = paste0(content_folder,"/analyses/mplus")
+r_folder = paste0(content_folder,"/analyses/r/")
 tables_folder = paste0(content_folder,"/tables")
 slides_folder = paste0(content_folder,"/slides")
+writing_folder = paste0(content_folder,"/writing")
+@
+<<importR,include=FALSE>>=
+# import analyses
+#source(paste0(r_folder,"DESeq.R"))
 @
 %
 %%%%%%%%%%%% Introduction %%%%%%%%%%%%
@@ -114,16 +120,16 @@ slides_folder = paste0(content_folder,"/slides")
 %
 %\section{Introduction}
 % Introduce the Major Problem
-\input{../Common/content/introduction/introduce_the_problem.txt}\\
-\input{../Common/content/introduction/importance_of_problem.txt}
+\input{../Common/content/writing/1introduction/introduce_the_problem.txt}\\
+\input{../Common/content/writing/1introduction/importance_of_problem.txt}
 %
 % Relevant Scholarship
 \subsection{Relevant Scholarship}
-\input{../Common/content/introduction/relevant_scholarship.txt}\\
+\input{../Common/content/writing/1introduction/relevant_scholarship.txt}\\
 %
 % Current Study
 \subsection{Current Study}
-\input{../Common/content/introduction/current_study.txt}
+\input{../Common/content/writing/1introduction/current_study.txt}
 %
 %%%%%%%%%%%% Method %%%%%%%%%%%%
 % JARS
@@ -164,39 +170,39 @@ slides_folder = paste0(content_folder,"/slides")
 %%% Other designs would have different reporting needs associated with them
 %
 \section{Method}
-\input{../Common/content/method/method.txt}
+\input{../Common/content/writing/2method/method.txt}
 %
 % Subject Characteristics
 \subsection{Subject Characteristics}
-\input{../Common/content/method/subjects.txt}
+\input{../Common/content/writing/2method/subjects.txt}
 %
 % Sampling Procedure
 \subsection{Sampling Procedure}
-\input{../Common/content/method/sampling.txt}
+\input{../Common/content/writing/2method/sampling.txt}
 %
 % Sample size, power, and precision
 \subsection{Sample Size, Power, and Precision}
-\input{../Common/content/method/power.txt}
+\input{../Common/content/writing/2method/power.txt}
 %
 % Measures and Covariates
 \subsection{Measures and Covariates}
-\input{../Common/content/method/measures_and_covariates.txt}
+\input{../Common/content/writing/2method/measures_and_covariates.txt}
 %
 %% Properties of Instrument A
 \subsubsection{Properties of Instrument A}
-\input{../Common/content/method/instrument_a.txt}
+\input{../Common/content/writing/2method/instrument_a.txt}
 %
 %% Properties of Instrument B
 \subsubsection{Properties of Instrument B}
-\input{../Common/content/method/instrument_b.txt}
+\input{../Common/content/writing/2method/instrument_b.txt}
 %
 % Research Design
 \subsection{Research Design}
-\input{../Common/content/method/design.txt}
+\input{../Common/content/writing/2method/design.txt}
 %
 % Experimental manipulations or interventions
 \subsection{Experimental Manipulations or Interventions}
-\input{../Common/content/method/experimental_manipulations.txt}
+\input{../Common/content/writing/2method/experimental_manipulations.txt}
 %
 %%%%%%%%%%%% Results %%%%%%%%%%%%
 % JARS
@@ -230,28 +236,28 @@ slides_folder = paste0(content_folder,"/slides")
 %% Ancillary analyses 
 %%% Discussion of implications of ancillary analyses for statistical error rates
 \section{Results}
-\input{../Common/content/results/results.txt}
+\input{../Common/content/writing/3results/results.txt}
 %
 % Participant flow
 \subsection{Participant Flow}
-\input{../Common/content/results/participant_flow.txt}
+\input{../Common/content/writing/3results/participant_flow.txt}
 %
 % Recruitment
 \subsection{Recruitment}
-\input{../Common/content/results/recruitment.txt}
+\input{../Common/content/writing/3results/recruitment.txt}
 %
 % Statistics and Data Analysis
 \subsection{Statistics and Data Analysis}
-\input{../Common/content/results/statistics_and_data_analysis.txt}
+\input{../Common/content/writing/3results/statistics_and_data_analysis.txt}
 %
 % Ancillary Analyses
 \subsection{Ancillary Analyses}
-\input{../Common/content/results/ancillary_analyses.txt}
+\input{../Common/content/writing/3results/ancillary_analyses.txt}
 %
 %% Intervention or Manipulation Fidelity.
 \subsection{Intervention or Manipulation Fidelity}
-\input{../Common/content/results/manipulation_fidelity.txt}
-\input{../Common/content/results/intervention.txt}
+\input{../Common/content/writing/3results/manipulation_fidelity.txt}
+\input{../Common/content/writing/3results/intervention.txt}
 
 %%%%%%%%%%%% Discussion %%%%%%%%%%%%
 % JARS
@@ -269,7 +275,7 @@ slides_folder = paste0(content_folder,"/slides")
 %%% Other contextual issues
 %% Discussion of implications for future research, program, or policy
 \section{Discussion}
-\input{../Common/content/discussion/discussion.txt}\nocite{A}\nocite{*}
+\input{../Common/content/writing/4discussion/discussion.txt}\nocite{A}\nocite{*}
 
 %%%%%%%%%%%% Tables %%%%%%%%%%%%
 \section{Tables}
