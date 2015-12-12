@@ -30,8 +30,6 @@
 %%%%%% Graphics %%%%%%
 \usepackage{graphicx}\graphicspath{{../Common/graphics/}}
 \usepackage[graphicx]{realboxes}
-%\usepackage{tikz}
-%\usetikzlibrary{decorations.fractals,calc,arrows,positioning}
 %%% Animate
 \usepackage{animate}
 \usepackage{media9}
@@ -78,9 +76,12 @@
 \newcommand{\R}{\textup{\textrm{R}}\xspace}
 \newcommand{\meb}{{\bf Garrison, S. M.}\xspace}
 \newcommand{\et}{\textit{et al.}\xspace}
-\newcommand{\eg}{\textit{e.g.},\xspace}
-\newcommand{\ie}{\textit{i.e.},\xspace}
+\newcommand{\eg}{\textit{e.g.}\xspace}
+\newcommand{\ie}{\textit{i.e.}\xspace}
 \newcommand{\etc}{\textit{etc}\xspace}
+%% In line Comments
+\usepackage[colorinlistoftodos]{todonotes}
+\newcommand{\cil}[1]{\todo[inline, color=green!40]{#1}}
 
 %%% Remove DOI %UNCOMMENT ALL to toggle between DOI and URL
 \usepackage{environ}
@@ -148,7 +149,6 @@
 \setcounter{fillersentencecounter}{1}
 \newread\pin@file
 
-
 \newcommand*\fillersentence [2] {%
   \IfFileExists{#2}{%
     \openin\pin@file #2
@@ -188,7 +188,6 @@
 \advance\dimen0-0.2\ht0
 \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
 {\box0\lower0.4pt\box2}}
-
 
 %%% Hypothesis counters
 \newcounter{myhypothesis}
