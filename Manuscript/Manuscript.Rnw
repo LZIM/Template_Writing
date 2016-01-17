@@ -24,7 +24,7 @@
 \threeaffiliations{One University}{University of Two}{Three College}
 %
 % Author Note
-\authornote{\input{../Common/content/title/authornote.txt}}
+\authornote{\input{../Common/content/title/authornote.tex}}
 %
 %%%%%%%%%%%% Abstract %%%%%%%%%%%%
 % JARS
@@ -42,15 +42,15 @@
 % Abstract
 \abstract{Last compile was \today\ at \currenttime\\
 %% Empirical Study
-\input{../Common/content/title/abstract_empreport.txt}}
+\input{../Common/content/title/abstract_empreport.tex}}
 %% Literature Review or Meta-analysis
-%%% \input{../Common/content/title/abstract_litreview.txt}}
+%%% \input{../Common/content/title/abstract_litreview.tex}}
 %% Theory-oriented Paper
-%%% \input{../Common/content/title/abstract_theorypaper.txt}}
+%%% \input{../Common/content/title/abstract_theorypaper.tex}}
 %% Methodological Paper
-%%% \input{../Common/content/title/abstract_method.txt}}
+%%% \input{../Common/content/title/abstract_method.tex}}
 %% Case Study
-%%% \input{../Common/content/title/abstract_casestudy.txt}}
+%%% \input{../Common/content/title/abstract_casestudy.tex}}
 %
 \begin{document}
 \maketitle
@@ -120,16 +120,16 @@ writing_folder = paste0(content_folder,"/writing")
 %
 %\section{Introduction}
 % Introduce the Major Problem
-\input{../Common/content/writing/1introduction/introduce_the_problem.txt}\\
-\input{../Common/content/writing/1introduction/importance_of_problem.txt}
+\input{../Common/content/writing/1introduction/introduce_the_problem.tex}\\
+\input{../Common/content/writing/1introduction/importance_of_problem.tex}
 %
 % Relevant Scholarship
 \subsection{Relevant Scholarship}
-\input{../Common/content/writing/1introduction/relevant_scholarship.txt}\\
+\input{../Common/content/writing/1introduction/relevant_scholarship.tex}\\
 %
 % Current Study
 \subsection{Current Study}
-\input{../Common/content/writing/1introduction/current_study.txt}
+\input{../Common/content/writing/1introduction/current_study.tex}
 %
 %%%%%%%%%%%% Method %%%%%%%%%%%%
 % JARS
@@ -170,39 +170,39 @@ writing_folder = paste0(content_folder,"/writing")
 %%% Other designs would have different reporting needs associated with them
 %
 \section{Method}
-\input{../Common/content/writing/2method/method.txt}
+\input{../Common/content/writing/2method/method.tex}
 %
 % Subject Characteristics
 \subsection{Subject Characteristics}
-\input{../Common/content/writing/2method/subjects.txt}
+\input{../Common/content/writing/2method/subjects.tex}
 %
 % Sampling Procedure
 \subsection{Sampling Procedure}
-\input{../Common/content/writing/2method/sampling.txt}
+\input{../Common/content/writing/2method/sampling.tex}
 %
 % Sample size, power, and precision
 \subsection{Sample Size, Power, and Precision}
-\input{../Common/content/writing/2method/power.txt}
+\input{../Common/content/writing/2method/power.tex}
 %
 % Measures and Covariates
 \subsection{Measures and Covariates}
-\input{../Common/content/writing/2method/measures_and_covariates.txt}
+\input{../Common/content/writing/2method/measures_and_covariates.tex}
 %
 %% Properties of Instrument A
 \subsubsection{Properties of Instrument A}
-\input{../Common/content/writing/2method/instrument_a.txt}
+\input{../Common/content/writing/2method/instrument_a.tex}
 %
 %% Properties of Instrument B
 \subsubsection{Properties of Instrument B}
-\input{../Common/content/writing/2method/instrument_b.txt}
+\input{../Common/content/writing/2method/instrument_b.tex}
 %
 % Research Design
 \subsection{Research Design}
-\input{../Common/content/writing/2method/design.txt}
+\input{../Common/content/writing/2method/design.tex}
 %
 % Experimental manipulations or interventions
 \subsection{Experimental Manipulations or Interventions}
-\input{../Common/content/writing/2method/experimental_manipulations.txt}
+\input{../Common/content/writing/2method/experimental_manipulations.tex}
 %
 %%%%%%%%%%%% Results %%%%%%%%%%%%
 % JARS
@@ -236,28 +236,28 @@ writing_folder = paste0(content_folder,"/writing")
 %% Ancillary analyses 
 %%% Discussion of implications of ancillary analyses for statistical error rates
 \section{Results}
-\input{../Common/content/writing/3results/results.txt}
+\input{../Common/content/writing/3results/results.tex}
 %
 % Participant flow
 \subsection{Participant Flow}
-\input{../Common/content/writing/3results/participant_flow.txt}
+\input{../Common/content/writing/3results/participant_flow.tex}
 %
 % Recruitment
 \subsection{Recruitment}
-\input{../Common/content/writing/3results/recruitment.txt}
+\input{../Common/content/writing/3results/recruitment.tex}
 %
 % Statistics and Data Analysis
 \subsection{Statistics and Data Analysis}
-\input{../Common/content/writing/3results/statistics_and_data_analysis.txt}
+\input{../Common/content/writing/3results/statistics_and_data_analysis.tex}
 %
 % Ancillary Analyses
 \subsection{Ancillary Analyses}
-\input{../Common/content/writing/3results/ancillary_analyses.txt}
+\input{../Common/content/writing/3results/ancillary_analyses.tex}
 %
 %% Intervention or Manipulation Fidelity.
 \subsection{Intervention or Manipulation Fidelity}
-\input{../Common/content/writing/3results/manipulation_fidelity.txt}
-\input{../Common/content/writing/3results/intervention.txt}
+\input{../Common/content/writing/3results/manipulation_fidelity.tex}
+\input{../Common/content/writing/3results/intervention.tex}
 
 %%%%%%%%%%%% Discussion %%%%%%%%%%%%
 % JARS
@@ -275,7 +275,7 @@ writing_folder = paste0(content_folder,"/writing")
 %%% Other contextual issues
 %% Discussion of implications for future research, program, or policy
 \section{Discussion}
-\input{../Common/content/writing/4discussion/discussion.txt}\nocite{A}\nocite{*}
+\input{../Common/content/writing/4discussion/discussion.tex}\nocite{A}\nocite{*}
 
 %%%%%%%%%%%% Tables %%%%%%%%%%%%
 \section{Tables}
