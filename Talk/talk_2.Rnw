@@ -1,7 +1,11 @@
 \documentclass[xcolor=x11names,compress]{beamer}
 \usepackage{../Common/style/Mason}
-\usepackage{../Common/style/MasonBeamer}
-
+\usepackage{../Common/style/MasonBeamer_talk}
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{5pt}}{\enditemize}
+\usepackage{wasysym} %mars and venus
+\newcommand\Fontbig{\fontsize{12}{12}\selectfont}
+\newcommand\Fontsmall{\fontsize{9}{9}\selectfont}
+\newcommand\Fonttiny{\fontsize{4}{4}\selectfont}
 \begin{document}
 
 <<setup, include=FALSE>>=

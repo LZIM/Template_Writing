@@ -2,6 +2,7 @@
 
 
 
+\mode<presentation>
 \usepackage[first=-30, last=30]{lcg}
 
 
@@ -11,6 +12,8 @@
 \usefonttheme{serif}
 \usepackage{palatino}
 
+\usepackage{caption}
+\setbeamerfont{caption}{size=\scriptsize}
 \setbeamerfont{title like}{shape=\scshape}
 \setbeamerfont{frametitle}{shape=\scshape}
 
@@ -28,7 +31,12 @@
 \newcommand{\<}[1]{\begin{column}{#1}}
 \renewcommand{\>}{\end{column}}
 
+% Bullet Points
+\setbeamercovered{transparent} % don't hide strip-teased bullet points
+\setbeamertemplate{itemize items}[triangle]
 
+% Bibliograhy spacing
+ \setlength{\bibsep}{10pt}
 
 %% New Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand*{\RandomShape}[1][DeepSkyBlue4]{

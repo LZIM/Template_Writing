@@ -1,55 +1,6 @@
-\documentclass[final,t]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
-%% maxwidth is the original width if it is less than linewidth
-%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
-\makeatletter
-\def\maxwidth{ %
-  \ifdim\Gin@nat@width>\linewidth
-    \linewidth
-  \else
-    \Gin@nat@width
-  \fi
-}
-\makeatother
-
-\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
-\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
-\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
-\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
-\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
-\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
-\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
-\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
-\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
-
-\usepackage{framed}
-\makeatletter
-\newenvironment{kframe}{%
- \def\at@end@of@kframe{}%
- \ifinner\ifhmode%
-  \def\at@end@of@kframe{\end{minipage}}%
-  \begin{minipage}{\columnwidth}%
- \fi\fi%
- \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
- \colorbox{shadecolor}{##1}\hskip-\fboxsep
-     % There is no \\@totalrightmargin, so:
-     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
- \MakeFramed {\advance\hsize-\width
-   \@totalleftmargin\z@ \linewidth\hsize
-   \@setminipage}}%
- {\par\unskip\endMakeFramed%
- \at@end@of@kframe}
-\makeatother
-
-\definecolor{shadecolor}{rgb}{.97, .97, .97}
-\definecolor{messagecolor}{rgb}{0, 0, 0}
-\definecolor{warningcolor}{rgb}{1, 0, 1}
-\definecolor{errorcolor}{rgb}{1, 0, 0}
-\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
-
-\usepackage{alltt}
+\documentclass[final,t]{beamer}
 \mode<presentation>
-{ \usetheme{VU}}
+{\usetheme{VU}}
 % additional settings
 \setbeamerfont{itemize}{size=\Hugesize}
 \setbeamerfont{itemize/enumerate body}{size=\Hugesize}
@@ -111,10 +62,11 @@ A sibling comparison approach}
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
 \begin{document}
-%\SweaveOpts{concordance=TRUE}
 \bibliographystyle{plainnat}
+
+%
 
 
 \begin{frame}[fragile]
@@ -126,171 +78,13 @@ A sibling comparison approach}
       %-- Block 1-1
       \begin{block}{Introduction} 
 
-       \beginjust\Large{Conscientiousness and intelligence consistently predict later health outcomes (Jokela \etal, 2013; Gotfredson \& Deary, 2004) across the life course (Roberts \etal, 2007).  However, conscientiousness and intelligence are seldom tested simultaneously (Deary \etal, 2010), making it difficult to determine whether both traits determine health or one measure is a proxy for the other. Intelligence and the conscientiousness facet of persistence are confounded under many assessment conditions (Duckworth, 2011). Moreover, persistence is associated with later health (Tores \etal, 2001), making the persistence-intelligence confound even more difficult to untangle.\smallskip\\  
-\hspace* {10 mm}Using the National Longitudinal Survey of Youth (NLSY) 1979, we examined the joint impact of intelligence and persistence assessed at adolescence on self-reported health at age 40. To control for genetic and environmental risk, we developed a sibling-based quasi-experimental method.}
-      \endjust\end{block}
-%-- Block 1-4
-\begin{block}{Data}
-\Large{\beginjust The National Longitudinal Survey of Youth 1979 (NLSY79) is a nationally representative household probability sample. In 1980, 12,686 adolescents between the ages of 14 and 22 were surveyed on a battery of measures, including the Armed Forces Vocational Aptitude Battery (ASVAB). Subscales of the ASVAB measure intelligence (AFQT) and persistence (Coding Speed). Participants are surveyed biannually by the Bureau of Labor Statistics (BLS).\endjust}\\\large{\begin{center}
 
 
-% Table created by stargazer v.5.1 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Fri, Jun 12, 2015 - 2:25:20 PM
-\begin{table}[!htbp] \centering 
-  \caption{} 
-  \label{} 
-\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
-\\[-1.8ex]\hline 
-\hline \\[-1.8ex] 
-Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
-\hline \\[-1.8ex] 
-raw.data.rawcodingspeed & 583 & 44.161 & 16.020 & 2 & 84 \\ 
-raw.data.rawAFQT & 583 & 61.153 & 20.482 & 11.500 & 103.000 \\ 
-raw.data.WGT & 604 & 115.460 & 21.646 & 20.171 & 211.147 \\ 
-\hline \\[-1.8ex] 
-\end{tabular} 
-\end{table} 
-
-\end{center}}\end{block}
-  \begin{block}{Methods}
-      \Large{\beginjust To control for gene and environmental confounds, we (2014) have adapted Kenny's (2001) reciprocal standard dyad model. The adaptation controls for gene and shared environmental influences within a simple regression framework, by taking the difference between the two siblings:\endjust}
-      \vskip-5.5ex\begin{align*}
-&&Y_{diff} &= \beta_{0} + \beta_{1}\bar{Y} + \beta_{2}\bar{X} + \beta_{3}X_{diff}\\[2.5mm] 
- \text{where,}&&Y_{diff} &= Y_{1i}-Y_{2i} \text{;  } \bar{Y} = \frac{Y_{1i}+Y_{2i}}{2} \\[2.5mm] 
-&&X_{diff} &= X_{1i}-X_{2i} \text{; } \bar{X} = \frac{X_{1i}+X_{2i}}{2} 
-      \end{align*}\vskip1.1ex
-  \Large{\beginjust The relative difference in outcomes ($Y_{diff}$) is predicted from the mean level of the outcome ($\bar{Y}$), the mean level of the predictor ($\bar{X}$), and the between-sibling predictor difference ($X_{diff}$; see fig. B). The mean levels support causal inference through at least a partial control for genes and shared environment. Therefore, we simultaneously evaluate the individual difference ($X_{diff}$) and the joint contribution of genes and shared environment ($\bar{Y}$ \& $\bar{X}$).\endjust}
-\end{block}
-
-    \end{column}%1
-
-    %-- Column 2 ---------------------------------------------------
-    \begin{column}{0.55\linewidth}
-     \begin{block}{Figures}
-     \begin{columns}[c, totalwidth=\textwidth]
-      \begin{column}{.6\linewidth}\centering
-              
-                  % \begin{figure}[htb]
-
-                  \includegraphics[keepaspectratio=TRUE, width=1\columnwidth]{ci}\\
-                 \vspace{-1.1cm}        \includegraphics [keepaspectratio=TRUE,height=.4\columnwidth]{bwh} \\
-                  
-                    \end{column}           
-          \begin{column}{.35\linewidth}\centering% 
-
-\hspace{-3.1cm}     \includegraphics [keepaspectratio=TRUE,width=1.01\columnwidth %height=(2\columnwidth + 
-               ]{coriv} 
-                    \end{column}\end{columns}\end{block}
-\begin{column}{\linewidth}\begin{block}{Sibling Dyads}\vspace{13.5cm}\end{block}\end{column}
-\begin{column}{.65\linewidth}
-\vspace{-14.55cm}\large{\begin{table}[htbp] %\centering 
-%  \caption{} %  \label{} 
-\begin{tabular}{@{\extracolsep{0pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
-%\\[-1.8ex]\hline 
-%\hline \\[-1.8ex] 
-% & \multicolumn{6}{c}{\textit{Dependent variable:}} \\ 
-\cline{2-7} 
-\\[-1.8ex] & \multicolumn{6}{c}{\Large{Difference in Health}} \\ 
-\\[-1.8ex] & \multicolumn{1}{c}{$^{\boxdot}$(1)$^{\circledcirc}$} & \multicolumn{1}{c}{(2)$^{\circledcirc}$} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)} & \multicolumn{1}{c}{(5)} & \multicolumn{1}{c}{(6)}\\ 
-\cline{1-7}  \\[-1.8ex] 
-\textbf{Individual}\\
-Persistence & -0.099^{*}$ $(0.024) & -0.059^{*}$ $(0.014) & -0.023$ $(0.015) &  &  & -0.044^{*}$ $(0.013) \\ 
-Intelligence & -0.095^{*}$ $(0.024) & -0.037^{*}$ $(0.014) & -0.039^{*}$ $(0.015) &  & -0.052^{*}$ $(0.013) &  \\ 
-Common Variance &  &  &  & -0.053^{*}$ $(0.013) &  &  \\ 
-  \textbf{Family}\\
-Persistence & -0.053^{*}$ $(0.017) & -0.043^{*}$ $(0.013) & -0.057^{*}$ $(0.020) &  &  & -0.041^{*}$ $(0.013) \\ 
-Intelligence & -0.027$ $(0.017) & 0.014$ $(0.013) & 0.022$ $(0.020) &  & -0.022$ $(0.014) &  \\ 
-Common Variance &  &  &  & -0.034^{*}$ $(0.013) &  &  \\ 
-Health & 0.155^{*}$ $(0.014) & 0.155^{*}$ $(0.014) & 0.155^{*}$ $(0.014) & 0.154^{*}$ $(0.014) & 0.157^{*}$ $(0.014) & 0.154^{*}$ $(0.013) \\ 
-\cline{1-7}  \\[-1.8ex] 
-Observations & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} & \multicolumn{1}{c}{4,268} \\ 
-%R$^{2}$ & \multicolumn{1}{c}{0.043} & \multicolumn{1}{c}{0.043} & \multicolumn{1}{c}{0.043} & \multicolumn{1}{c}{0.042} & \multicolumn{1}{c}{0.041} & \multicolumn{1}{c}{0.042} \\ 
-Adjusted R$^{2}$ & \multicolumn{1}{c}{0.042} & \multicolumn{1}{c}{0.042} & \multicolumn{1}{c}{0.042} & \multicolumn{1}{c}{0.041} & \multicolumn{1}{c}{0.040} & \multicolumn{1}{c}{0.041} \\ 
-%Residual Std. Error & \multicolumn{1}{c}{0.841 (df = 4262)} & \multicolumn{1}{c}{0.841 (df = 4262)} & \multicolumn{1}{c}{0.841 (df = 4262)} & \multicolumn{1}{c}{0.841 (df = 4264)} & \multicolumn{1}{c}{0.842 (df = 4264)} & \multicolumn{1}{c}{0.842 (df = 4264)} \\ 
-F Statistic & \multicolumn{1}{c}{38.665$^{*}$ (df = 5; 4262)} & \multicolumn{1}{c}{38.665$^{*}$ (df = 5; 4262)} & \multicolumn{1}{c}{38.665$^{*}$ (df = 5; 4262)} & \multicolumn{1}{c}{62.551$^{*}$ (df = 3; 4264)} & \multicolumn{1}{c}{60.923$^{*}$ (df = 3; 4264)} & \multicolumn{1}{c}{61.693$^{*}$ (df = 3; 4264)} \\ 
-\cline{1-7}  
-\cline{1-7}  \\[-1.8ex] 
-\textit{Notes:} & \multicolumn{3}{l}{\begin{tabular}{l}\textbf{$^{\circledcirc}$} Persistence was partialed out of Intelligence\\\textbf{$^{\boxdot}$} Intelligence was partialed out of Persistence.\end{tabular}} &\multicolumn{6}{r}{\begin{tabular}{l}$^{*}$p$<$0.05\\ Standardized $\beta(SE)$\end{tabular}} \\ 
-\end{tabular} 
-\end{table} }
-\end{column} %\end{block}
-              % \end{columns}
-
- %\vskip-2.7ex
-% \begin{columns}[t, totalwidth=\textwidth]
- %                   \begin{column}{.6\linewidth}
-                           
-  %                  \end{column}
-                  %  \begin{column}{.38\linewidth}
-                       
-                  %  \end{column}
-   %            \end{columns}
-%\end{block}               
-
-                          
-      \end{column}%2
-        %-- Column 3 -----
-  %\begin{column}{0.20\linewidth}
-
-%\end{column}%2
-    %-- Column 4 -----
-    
-    \begin{column}{0.20\linewidth}
-    \begin{block}{Dyad Correlation Matrix}\vskip-4ex   
-
-\Large{\begin{table}[!htbp] \centering 
- % \caption{Correlation Matrix} 
- % \label{} 
-\begin{tabular}{@{\extracolsep{5pt}} ccccccccc} 
-\\[-1.8ex]%\hline 
-\hline \\[-1.8ex] 
-                   &Self     & && & Sibling\\% Health & rawintelligence\_S1 & rawcodingspeed\_S1 & SelfHealth\_S2 & rawintelligence\_S2 & rawcodingspeed\_S2 & overlapav\_S1 & overlapav\_S2 \\ 
-\hline \\[-1.8ex] 
-Health          &  $1$            & && & $0.543$\\%$$-$0.281$ & $$-$0.233$ &     & $$-$0.235$ & $$-$0.197$ & $$-$0.274$ & $$-$0.231$ \\ 
-AFQT     & $0.281$ & $1$           & && $0.668$\\%$0.715$    & $$-$0.223$ & $0.668$    & $0.481$    & $0.903$    & $0.608$ \\ 
-CS      & $0.233$ & $0.715$  & $1$  &&$0.425$           \\%$$-$0.160$ & $0.480$    & $0.425$    & $0.946$    & $0.486$ \\ 
-%SelfHealth\_S2      & $0.543$    & $$-$0.223$ & $$-$0.160$ & $1$        & $$-$0.229$ & $$-$0.182$ & $$-$0.201$ & $$-$0.219$ \\ 
-%rawintelligence\_S2 & $$-$0.235$ & $0.668$    & $0.480$    & $$-$0.229$ & $1$        & $0.700$    & $0.604$    & $0.898$ \\ 
-%rawcodingspeed\_S2  & $$-$0.197$ & $0.481$    & $0.425$    & $$-$0.182$ & $0.700$    & $1$        & $0.484$    & $0.943$ \\ 
-Overlap      & $0.274$ & $0.903$    & $0.946$& $1$    & $0.580$ \\ %& $0.604$    & $0.484$    & $1$        & $0.580$ \\ 
-%overlapav\_S2       & $0.231$ & $0.608$    & $0.486$    & $$-$0.219$ & $0.898$    & $0.943$    & $0.580$    & $1$ \\ 
-\hline \\[-1.8ex] 
-\end{tabular} 
-\end{table} }\vskip-3ex   
-\end{block}
-      %-- Block 3-1
-      \begin{block}{Results}
-      \beginjust\Large{A series of kinship dyad regressions used the AFQT and Coding Speed scales from the ASVAB at Wave 1 to predict self-reported health at age 40. The models simultaneously evaluated the influence of the individual difference and the joint contribution of genes and shared environment.\smallskip\\
-            \textbf{Correlation Structure}\smallskip\\
-            Within sibling correlations revealed that health moderately correlated with intelligence, persistence, and their overlap (r $\approx$ .25). Persistence was strongly related to AFQT score (r = .72), more so than the correlations between siblings, which ranged from .43 to .67.\\
-            \textbf{Models}\smallskip\\
-Models 6, 5, and 4 examined the incremental impacts of persistence, intelligence, and their common variance -- respectively -- on health. Each found that respective individual difference was influential.\smallskip\\%, and that genes and shared environment were predictive.\smallskip\\
-\hspace{1cm}Model 3 examined the incremental impacts of both persistence and intelligence on health, without controlling for their covariance. Intelligence was significantly predicted health, while persistence was not.\smallskip\\ 
-\hspace{1cm}Model 2 examined the incremental impacts of both persistence and intelligence, on health, after partialing persistence from intelligence. Both significantly predicted health. Model 1 fully extracted the common variance by partialing persistence from intelligence and intelligence from persistence. Both still significantly predicted health with comparably sized effects.\smallskip\\
-%\hspace{1cm}Intelligence and persistence significantly predicted health, controlling for genes and shared environment. A 1 sd increase in persistence or intelligence difference increased the difference in health by .10. A 1 sd increase in family level of persistence increased the difference in health by .06. A 1 sd increase in family health predicted a reduction in the difference between siblings.\smallskip\\
-%Figures A, C, and D depict the relationship between intelligence and persistence between siblings. Figure B depicts the relationship within siblings.}
-   }\endjust\end{block}
-
-      %-- Block 3-2
-      %\begin{alertblock}{Conclusion}
-      %  This is an alert block.  Much less annoying than PowerPoint.  Copy and Paste from your
-      %  document. Overall, a great idea!
-      %\end{block}
- \begin{block}{Summary}
- \beginjust\Large{%Both individual level and family level (shared environment and genes) variables account for sibling differences in health. Increases in intelligence or persistence predict increases in health, while increases in family level health reduces the difference.\smallskip\\
-%These models indicate that persistence and intelligence impact health, even after controlling for genes and environment.
-\begin{itemize}
-%\item Both individual differences and famility level variables (shared environment and genes) explain sibling health differences.\\
-\item Intelligence and persistence individually predict health, even after controlling for genes and shared environment (Models 5, 6).\\
-\item Their shared covariance was an equally effective predictor, beyond genes and shared environment (4).\\
-\item When modeled jointly, partialed intelligence and persistence comparably accounted for health (1 , 2).\\
-\item When the covariance between intelligence and persistence was not modeled, intelligence masked the effect of persistence (3).\end{itemize}%\smallskip\\
-%Conclusion: The relationship between intelligence and persistence needs to be taken into account whenever using both predictors. 
-}\endjust\end{block}\end{column}
-  \end{columns}
-
-\end{frame}
 
 
-%\end{altenv}
-\end{document}
+
+
+
+
+
+

@@ -87,10 +87,7 @@
 file_drive= "C:"
 #file_drive="E:"
 #
-
-file_drive= "C:"
 #Current= "Current Projects"
-##file_drive="E:"
 
 directory = paste0(file_drive,"/Dropbox/Lab/zTemplates/LaTeX/Writing")
 content_folder = paste0(directory,"/Common/content")

@@ -1,6 +1,6 @@
 \documentclass[final,t]{beamer}
 \mode<presentation>
-{ \usetheme{VU}}
+{\usetheme{VU}}
 % additional settings
 \setbeamerfont{itemize}{size=\Hugesize}
 \setbeamerfont{itemize/enumerate body}{size=\Hugesize}
@@ -64,11 +64,50 @@ A sibling comparison approach}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-%\SweaveOpts{concordance=TRUE}
 \bibliographystyle{plainnat}
-<<label=first, include=FALSE, echo=FALSE>>= 
+<<sweave,echo=FALSE>>=
+####### Sweave/Knitr Set Up #######
+# Options
+## R code width
+  options(width=60)
+##
+## Scientif Notation, magnitude needed for 
+  options(scipen=5)
+##
+## Round
+  options(digits=3)
+#
+# R Style
+## Allows wraping
+  listing <- function(x, options) {
+    paste("\\begin{lstlisting}[style=Rsettings]\n",
+      x, "\\end{lstlisting}\n", sep = "")
+  }
+## Incorporate modified Listings into Output
+  knit_hooks$set(source=listing, output=listing)
+#
+# Knitr defaults
+## Override
+  knit_hooks$set(document = function(x) {sub('\\usepackage[]{color}', '\\usepackage{xcolor}', x, fixed = TRUE)})
+@
+%
+<<dataorganization,include=FALSE>>=
+####### Data Organization
+# File Structure
 file_drive= "C:"
 #file_drive="E:"
+#
+#Current= "Current Projects"
+
+directory = paste0(file_drive,"/Dropbox/Lab/zTemplates/LaTeX/Writing")
+content_folder = paste0(directory,"/Common/content")
+data_folder = paste0(content_folder,"/data")
+mplus_folder = paste0(content_folder,"/analyses/mplus")
+r_folder = paste0(content_folder,"/analyses/r/")
+tables_folder = paste0(content_folder,"/tables")
+slides_folder = paste0(content_folder,"/slides")
+writing_folder = paste0(content_folder,"/writing")
+
 
 
   sweaveTemplate="beamerpostertest.Rnw"
@@ -95,9 +134,9 @@ Cor <- function(x) stats::cor(x, use = "pairwise.complete.obs")
 
       %-- Block 1-1
       \begin{block}{Introduction} 
-      <<label=datamanagement, include=FALSE, echo=FALSE>>= 
-coding_speed <- read.delim("data/coding_speed.csv")
-raw1980intelligence<- read.csv("data/raw1980intelligence.csv")
+<<label=datamanagement, include=FALSE, echo=FALSE>>= 
+coding_speed <- read.delim(paste0(content_folder,"/data/coding_speed.csv"))
+raw1980intelligence<- read.csv(paste0(content_folder,"/data/raw1980intelligence.csv"))
 raw1980intelligence[raw1980intelligence < 0] <- NA  
 names(raw1980intelligence)<-c("MCASEID","rawAFQT")
 coding_speed$MCASEID<-coding_speed$SubjectID
@@ -105,9 +144,9 @@ coding_speed$rawcodingspeed <- coding_speed$ASVAB.8
 coding_speed$rawcodingspeed[coding_speed$rawcodingspeed == -4] <- NA  
 
 rawcodingspeed <-  coding_speed[,6:7]
-momintel <- read.csv("C:/Dropbox/SAS/MyFolders/79/SASGen1/momintel.csv", header=FALSE)
+momintel <- read.csv("C:/Dropbox/Lab/zSoftware/SAS/MyFolders/79/SASGen1/momintel.csv", header=FALSE)
 names(momintel)<-c("MCASEID","Intel_G1","Intel_G1_SE","HID")
-IRT2PL_person_no_cluster <- read.table("C:/Dropbox/Work/Research/Projects/NLSY/AFI/R/MplusG1/IRT2PL_person_no_cluster.csv", quote="\"")
+IRT2PL_person_no_cluster <- read.table("C:/Dropbox/Lab/Research/Projects/NLSY/AFI/R/MplusG1/IRT2PL_person_no_cluster.csv", quote="\"")
 IRT2PL_person_no_cluster<- IRT2PL_person_no_cluster[,105:106]
 names(IRT2PL_person_no_cluster)<-c("MCASEID","Intel_G1_NC")
 birthweight <- read.table("C:/Dropbox/SAS/MyFolders/79/SASGen1Kids/birthweight.dat", quote="\"", stringsAsFactors=FALSE)
@@ -145,7 +184,7 @@ library(tables)
 library(Hmisc)
 
 @ 
-       \beginjust\Large{Conscientiousness and intelligence consistently predict later health outcomes (Jokela \etal, 2013; Gotfredson \& Deary, 2004) across the life course (Roberts \etal, 2007).  However, conscientiousness and intelligence are seldom tested simultaneously (Deary \etal, 2010), making it difficult to determine whether both traits determine health or one measure is a proxy for the other. Intelligence and the conscientiousness facet of persistence are confounded under many assessment conditions (Duckworth, 2011). Moreover, persistence is associated with later health (Tores \etal, 2001), making the persistence-intelligence confound even more difficult to untangle.\smallskip\\  
+\beginjust\Large{Conscientiousness and intelligence consistently predict later health outcomes (Jokela \etal, 2013; Gotfredson \& Deary, 2004) across the life course (Roberts \etal, 2007).  However, conscientiousness and intelligence are seldom tested simultaneously (Deary \etal, 2010), making it difficult to determine whether both traits determine health or one measure is a proxy for the other. Intelligence and the conscientiousness facet of persistence are confounded under many assessment conditions (Duckworth, 2011). Moreover, persistence is associated with later health (Tores \etal, 2001), making the persistence-intelligence confound even more difficult to untangle.\smallskip\\  
 \hspace* {10 mm}Using the National Longitudinal Survey of Youth (NLSY) 1979, we examined the joint impact of intelligence and persistence assessed at adolescence on self-reported health at age 40. To control for genetic and environmental risk, we developed a sibling-based quasi-experimental method.}
       \endjust\end{block}
 %-- Block 1-4

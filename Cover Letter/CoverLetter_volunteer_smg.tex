@@ -1,0 +1,108 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Long Lined Cover Letter
+% LaTeX Template
+% Version 1.0 (1/6/13)
+%
+% Original author:
+% Matthew J. Miller
+% http://www.matthewjmiller.net/howtos/customized-cover-letter-scripts/
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,stdletter,dateno,sigleft]{newlfm} % Extra options: 'sigleft' for a left-aligned signature, 'stdletternofrom' to remove the from address, 'letterpaper' for US letter paper - consult the newlfm class manual for more options
+
+\usepackage{charter} % Use the Charter font for the document text
+\usepackage{xspace}
+\newsavebox{\Luiuc}\sbox{\Luiuc}{\parbox[b]{1.5in}{\vspace{0.5in}
+\includegraphics[width=1.2\linewidth]{../Common/graphics/logo.png}}} % Company/institution logo at the top left of the page
+\makeletterhead{Uiuc}{\Lheader{\usebox{\Luiuc}}}
+
+\newlfmP{sigsize=0pt} % Slightly decrease the height of the signature field
+%\newlfmP{addrfromphone} % Print a phone number under the sender's address
+%\newlfmP{addrfromemail} % Print an email address under the sender's address
+%\PhrPhone{Phone} % Customize the "Telephone" text
+%\PhrEmail{Email} % Customize the "E-mail" text
+
+\lthUiuc % Print the company/institution logo
+
+%----------------------------------------------------------------------------------------
+%	YOUR NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\namefrom{\vspace{-.45in} \includegraphics[width=.7\linewidth]{../Common/graphics/signature.png}
+\\S. Mason Garrison\\
+s.mason.garrison@gmail.com} % Name
+
+%\addrfrom{
+%\today\\ % Date
+%Nashville, TN 37203\\
+%(267) 357-4392\\
+%s.mason.garrison@gmail.com
+%}
+
+\phonefrom{} % Phone number
+
+\emailfrom{} % Email address
+
+%----------------------------------------------------------------------------------------
+%	Customization
+%----------------------------------------------------------------------------------------
+
+\greetto{Dear Dr. Stadtlander,} % Greeting text
+\closeline{Sincerely yours,} % Closing text
+
+\nameto{\today\medskip\\Dr. Lee Stadtlander} % Addressee of the letter above the to address
+
+\addrto{
+College of Social and Behavioral Sciences\\
+Walden University\\
+Minneapolis, Minnesota}
+
+
+\newcommand{\Position}{S. Mason Garrison and Joseph Lee Rodgers\xspace}
+
+\newcommand{\Journal}{\textit{Intelligence}\xspace}
+
+\newcommand{\Presented}{This research was originally presented by Joe Rodgers at ISIR in Albuquerque last October}
+
+\newcommand{\Goal}{Several studies, including Halpern \textit{et al.} (2000), have reported a positive relationship between age at first intercourse (AFI) and intelligence in s. Although this link between adolescenct intelligence and AFI has face validity, and has been confidently asserted (or often implied) as a causal link, the causal mechanism has not been carefully investigated}
+
+
+\newcommand{\Findings}{we used an intergenerational sibling comparison design to investigate the causal link between intelligence and AFI, using the National Longitudinal Survey of Youth 1979 and the NLSY-Children/Young Adult data. Using a between-family design, we replicated earlier results. However, when we use a within-family design and compare offspring of sisters, and then compare the offspring themselves, the relationship between maternal/child intelligence and AFI virtually disappears}%[list a few important results].
+\newcommand{\Scope}{challenges the strong causal inference in past studies concerning the relationship between AFI and intelligence}%specific link to the journal's aims \& scope
+
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\begin{newlfm}
+
+%----------------------------------------------------------------------------------------
+%	LETTER CONTENT
+%----------------------------------------------------------------------------------------
+
+I am writing to \Position
+
+I am pleased to submit an original research article entitled \Title by \Authors for consideration for publication in \Journal. \Presented.
+
+\Goal.
+
+In this manuscript, \Findings.
+
+We believe that this manuscript is appropriate for publication by \Journal because it \Scope .
+
+This manuscript has not been published and is not under consideration for publication elsewhere. We have no conflicts of interest to disclose.
+
+Thank you for your consideration!
+
+%----------------------------------------------------------------------------------------
+
+\end{newlfm}
+\end{document}
