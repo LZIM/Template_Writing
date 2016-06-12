@@ -83,13 +83,11 @@
 %
 <<dataorganization,include=FALSE>>=
 ####### Data Organization
+
 # File Structure
 file_drive= "C:"
-#file_drive="E:"
-#
-#Current= "Current Projects"
-
-directory = paste0(file_drive,"/Dropbox/Lab/zTemplates/LaTeX/Writing")
+file_drive="E:"
+directory = paste0(file_drive,"/Dropbox/Lab/Research/Projects/Current/Thesis")
 content_folder = paste0(directory,"/Common/content")
 data_folder = paste0(content_folder,"/data")
 mplus_folder = paste0(content_folder,"/analyses/mplus")
@@ -97,6 +95,10 @@ r_folder = paste0(content_folder,"/analyses/r/")
 tables_folder = paste0(content_folder,"/tables")
 slides_folder = paste0(content_folder,"/slides")
 writing_folder = paste0(content_folder,"/writing")
+
+# Functions
+source(paste0(r_folder,"MasonHelperFunctions.R"))
+
 @
 <<importR,include=FALSE>>=
 # import analyses

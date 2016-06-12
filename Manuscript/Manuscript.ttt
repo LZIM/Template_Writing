@@ -1,0 +1,26 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[!htbp] \centering
+  \caption{}
+  \label{}
+\begin{tabular}{@{\extracolsep{5pt}}lccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\
+\hline \\[-1.8ex]
+GCleaned.gritp & 76 & 3.834 & 0.484 & 2.167 & 4.667 \\
+GCleaned.gritc & 76 & 2.754 & 0.632 & 1.167 & 4.000 \\
+CSCleaned.cs\_score & 76 & 70.368 & 12.044 & 36 & 84 \\
+NCleaned.neo\_c & 73 & 155.781 & 28.463 & 101 & 230 \\
+NCleaned.neo\_Comp & 75 & 22.107 & 4.480 & 9 & 31 \\
+NCleaned.neo\_Order & 75 & 17.893 & 5.221 & 6 & 30 \\
+NCleaned.neo\_Duti & 75 & 22.867 & 4.065 & 9 & 32 \\
+NCleaned.neo\_Achieve & 75 & 20.613 & 5.088 & 10 & 32 \\
+NCleaned.neo\_SelfD & 74 & 18.081 & 6.285 & 3 & 31 \\
+NCleaned.neo\_Delib & 74 & 53.946 & 10.491 & 30 & 80 \\
+GCleaned.gritmean & 76 & 3.292 & 0.417 & 2.333 & 4.167 \\
+\hline \\[-1.8ex]
+\end{tabular}
+\end{table*}
+\efloatseparator
+ 
