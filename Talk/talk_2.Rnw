@@ -1,12 +1,108 @@
 \documentclass[xcolor=x11names,compress]{beamer}
 \usepackage{../Common/style/Mason}
 \usepackage{../Common/style/MasonBeamer_talk}
-\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{5pt}}{\enditemize}
-\usepackage{wasysym} %mars and venus
+\usepackage{verbatim}
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{.5em}%
+    \insertframenumber/\inserttotalframenumber
+}
+\renewcommand*{\bibfont}{\scriptsize}
+%\usepackage{soul} % Strike through
+\newenvironment{wideitemize}%
+  {\begin{itemize}%
+    \addtolength{\itemsep}{5pt}%
+    \addtolength{\topsep}{5pt}%
+    \addtolength{\partopsep}{5pt}}%
+  {\end{itemize}}
+\usepackage{bm} % bold math
+\makeatletter
+\newbox\@backgroundblock
+\newenvironment{backgroundblock}[2]{%
+  \global\setbox\@backgroundblock=\vbox\bgroup%
+    \unvbox\@backgroundblock%
+    \vbox to0pt\bgroup\vskip#2\hbox to0pt\bgroup\hskip#1\relax%
+}{\egroup\egroup\egroup}
+\addtobeamertemplate{background}{\box\@backgroundblock}{}
+\makeatother
+\usepackage{tikz}  
 \newcommand\Fontbig{\fontsize{12}{12}\selectfont}
 \newcommand\Fontsmall{\fontsize{9}{9}\selectfont}
 \newcommand\Fonttiny{\fontsize{4}{4}\selectfont}
 \begin{document}
+%%%%%%%%%%%% Set-Up %%%%%%%%%%%%
+<<Knitrsetup,echo=FALSE,include=FALSE>>=
+####### Sweave/Knitr Set Up #######
+# Global
+## Options
+### R code width
+  options(width=60)
+##
+### Scientific Notation, magnitude needed for 
+  options(scipen=999)
+##
+### Round
+  options(digits=2)
+## Header
+opts_knit$set(progress = TRUE, verbose = FALSE)
+  
+# Knitr hooks
+  
+# Local
+local({
+  hook_chunk = knit_hooks$get('chunk')
+  knit_hooks$set(chunk = function(x, options) {
+    x = hook_chunk(x, options)
+    if (options$results == 'asis' && !options$echo && options$fig.num == 0) {
+      # remove all kframe's
+      gsub('\\\\(begin|end)\\{kframe\\}', '', x)
+    } else  x
+  })
+})
+
+ knit_hooks$set(source = function(x, options) {
+   if (options$results == 'asis' && !options$echo && options$fig.num == 0) {
+         x
+   } else {
+         paste0("\\begin{lstlisting}[style=Rsettings]\n", x, "\\end{lstlisting}\n")}
+   })
+ 
+knit_hooks$set(document = function(x) {
+  sub('\\usepackage[]{color}', '\\usepackage{xcolor}', x, fixed = TRUE)
+  })
+
+
+#bib text
+Sys.setenv(TEXINPUTS=getwd(),
+           BSTINPUTS=getwd(),
+           BIBINPUTS="C:/texlive/texmf-local/bibtex/bib/local")
+           #RSTUDIO_PDFLATEX = Sys.which("latexmk"))
+@
+%
+<<Rsetup, include=FALSE>>=
+# Libraries
+## Install Most Current Version
+library(devtools)#;dev_mode(on=T)
+#install_github("LiveOak/NlsyLinks")
+#install_github("harrelfe/Hmisc");dev_mode(on=F)
+## Attach Remaining
+library(corrplot)
+library(ggplot2);library(ggExtra);library(gtable)
+library(grid);library(gridExtra)
+library(Hmisc)
+library(MplusAutomation);library(matrixStats)
+library(NlsyLinks)
+library(plyr);library(psych)
+library(QuantPsyc)
+#library(stargazer)
+library(tables)
+library(xtable)
+#
+# File Structure
+file_drive= "C:"
+file_drive="E:"
+directory = paste0(file_drive,"/Dropbox/Lab/Research/Projects/Completed/NLSY AFI")
 
 <<setup, include=FALSE>>=
 
