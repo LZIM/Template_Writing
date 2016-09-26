@@ -87,35 +87,14 @@ library(devtools)#;dev_mode(on=T)
 #install_github("LiveOak/NlsyLinks")
 #install_github("harrelfe/Hmisc");dev_mode(on=F)
 ## Attach Remaining
-library(corrplot)
-library(ggplot2);library(ggExtra);library(gtable)
-library(grid);library(gridExtra)
-library(Hmisc)
-library(MplusAutomation);library(matrixStats)
-library(NlsyLinks)
-library(plyr);library(psych)
-library(QuantPsyc)
-#library(stargazer)
-library(tables)
-library(xtable)
+library(knitr)
+library(ggplot2)
+library(effects)
 #
 # File Structure
 file_drive= "C:"
 file_drive="E:"
-directory = paste0(file_drive,"/Dropbox/Lab/Research/Projects/Completed/NLSY AFI")
-
-<<setup, include=FALSE>>=
-
-#LIBRARIES
-library(knitr)
-library(ggplot2)
-library(effects)
-library(stargazer)
-
-#FUNCTIONS
-
-
-@
+directory = paste0(file_drive,"/Dropbox/Lab/Research/Projects/Current/PROJECT")
 
 <<data, include=FALSE>>=
 #temp = list.files(path=data_folder,pattern="*.csv")
@@ -155,10 +134,28 @@ library(stargazer)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 Discussion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+\input{../Common/content/slides/conclude.txt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 Acknowledgments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Acknowledgments}
+\input{../Common/content/slides/Acknowledgments.txt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                 REFERENCES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{References}
-\input{../Common/content/slides/References.txt}
+%\input{../Common/content/slides/References.txt}
+\subsection{References}
+\begin{frame}[allowframebreaks,t]
+\frametitle{References}
+
+\bibliographystyle{apacite}
+
+\bibliography{C:/texlive/texmf-local/bibtex/bib/local/Talks-NAME}
+\end{frame}
 \end{document}
