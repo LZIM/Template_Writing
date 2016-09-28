@@ -2,20 +2,7 @@
 \usepackage{../Common/style/Mason}
 \usepackage{../Common/style/MasonBeamer_talk}
 \usepackage{verbatim}
-\addtobeamertemplate{navigation symbols}{}{%
-    \usebeamerfont{footline}%
-    \usebeamercolor[fg]{footline}%
-    \hspace{.5em}%
-    \insertframenumber/\inserttotalframenumber
-}
-\renewcommand*{\bibfont}{\scriptsize}
-%\usepackage{soul} % Strike through
-\newenvironment{wideitemize}%
-  {\begin{itemize}%
-    \addtolength{\itemsep}{5pt}%
-    \addtolength{\topsep}{5pt}%
-    \addtolength{\partopsep}{5pt}}%
-  {\end{itemize}}
+
 \usepackage{bm} % bold math
 \makeatletter
 \newbox\@backgroundblock

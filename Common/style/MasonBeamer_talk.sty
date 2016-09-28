@@ -37,7 +37,9 @@
 
 % Bibliograhy spacing
  \setlength{\bibsep}{10pt}
-
+ 
+% Bibliograhy font size 
+\renewcommand*{\bibfont}{\scriptsize}
 %% New Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand*{\RandomShape}[1][DeepSkyBlue4]{
 \begin{tikzpicture}[decoration=Koch curve type 2] 
@@ -55,3 +57,20 @@
 \pgfmathparse{\pgfmath@rnd@z}\pgfmathresult%
 }
 \makeatother
+
+
+%%% Trial Commands
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{.5em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+
+\newenvironment{wideitemize}%
+  {\begin{itemize}%
+    \addtolength{\itemsep}{5pt}%
+    \addtolength{\topsep}{5pt}%
+    \addtolength{\partopsep}{5pt}}%
+  {\end{itemize}}
